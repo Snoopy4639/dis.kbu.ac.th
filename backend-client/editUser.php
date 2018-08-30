@@ -14,7 +14,7 @@
 	<!-- Font ! -->
 	<link href="https://fonts.googleapis.com/css?family=Prompt" rel="stylesheet">
 	<!-- CN css -->
-	<link rel="stylesheet" type="text/css" href="css/headerDIS.css">
+	<link rel="stylesheet" type="text/css" href="css/src.css">
 	<!--Bootstap 4 -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
 	<!-- W3 -->
@@ -59,6 +59,7 @@
                                     <div class="w3-card-2 w3-white">
                                         <div class="col-12">&nbsp;</div>
                                         <img id="profile_image" src="src/backend/upload/<?php echo($result['profile_pic']);?>" class="img-fluid upload-profile">
+                                        <div class="col-12">&nbsp;</div>
                                     </div>
                                 </div>
                                 <div class="col-8">
@@ -153,6 +154,7 @@
                                                     <?php if($status == 2) { echo('disabled'); }?> >
                                                 </div>
                                             </div>
+                                            <div class="col-12">&nbsp;</div>
                                             <?php if($status == 1) {?>
                                             <div class="col-12">
                                                 <label class="detail text-danger">
@@ -160,9 +162,44 @@
                                                 </label>
                                             </div>
                                             <?php } ?>
-                                            <div class="col-12">&nbsp;</div>
                                         </div>
                                     </div>
+                                    <div class="col-12">&nbsp;</div>
+                                    <?php if ($result['group_status'] == 5) {?>
+                                        <?php
+                                            $firstTimePassword = rand(1111,9999);
+                                        ?>
+                                        <div class="w3-card-2 w3-red" style="padding-top:1%; padding-bottom:1%">
+                                            <div class="container-fluid">
+                                                <div class="row">
+                                                    <div class="col-8" style="padding-top:1%">
+                                                        <label class="mini-header">Username นี้มีการแจ้งต้องการ Reset Password คลิ๊กปุ่มทางขวาเพื่อดำเนินต่อ ></label>
+                                                    </div>
+                                                    <div class="col-4 w3-right">
+                                                        <button class="w3-button w3-white" type="button" onclick="document.getElementById('resetPassword').style.display='block'" <?php if($status == 2) { echo('disabled'); }?>>
+                                                            <i class="fa fa-repeat"></i>&nbsp;&nbsp;ทำการ Reset Password
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="resetPassword" class="w3-modal">
+                                            <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+                                                <div class="container-fluid">
+                                                    <div class="w3-center"><br>
+                                                        <span onclick="document.getElementById('resetPassword').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
+                                                        <label class="header w3-red"><font size="+3">&nbsp;&nbsp;<?=$firstTimePassword?>&nbsp;&nbsp;</font></label><br>
+                                                        <div class="col-12">&nbsp;</div>
+                                                        <label class="header">โปรดนำตัวเลข 4 หลักด้านบน</label><br>
+                                                        <label class="header">ให้แก่ผู้ขอ Reset Password เพื่อใช้งานระบบและแก้ไขรหัสผ่านในครั้งถัดไป</label><br>
+                                                    </div>
+                                                </div>
+                                                <a href="<?php echo('src/backend/reset-password.php?gen='.$firstTimePassword.'&id='.$result['id'])?>"><button class="w3-button w3-block w3-green w3-section w3-padding" type="button">
+                                                    <i class="fa fa-check icon-detail"></i>&nbsp;&nbsp;ยืนยันการ Reset Password !
+                                                </button></a>
+                                            </div>
+                                        </div>
+                                    <?php } ?>
                                 </div>
                                 <div class="col-12">&nbsp;</div>
                                 <input type="hidden" value="<?=$id?>" name="idStatus">

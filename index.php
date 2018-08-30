@@ -39,6 +39,26 @@
                         </div>
                     </div>
                     <?php }?>
+                    <?php if($_GET["Status"] == 1) {?>
+                    <div id="alert-loginFail" class="col-12">
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <i class="fa fa-info-circle icon-detail"></i>&nbsp;&nbsp;&nbsp;Reset Password เรียบร้อยกรุณาติดต่อ Admin เพื่อดำเนินการต่อไป
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                    <?php }?>
+                    <?php if($_GET["Status"] == 2) {?>
+                    <div id="alert-loginFail" class="col-12">
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <i class="fa fa-times-circle icon-detail"></i>&nbsp;&nbsp;&nbsp;Username / เบอร์โทรศัพท์ / E-mail ผิดพลาด ไม่สามารถ Reset Password ได้ กรุณาลองใหม่อีกครั้งหรือติดต่อ Admin
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                    <?php }?>
                 <?php } ?>
                 <div class="col-12">&nbsp;</div>
                 <div class="w3-card-4 w3-light-gray" style="padding:2% 2% 2% 2%">
