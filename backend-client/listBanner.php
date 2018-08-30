@@ -72,7 +72,7 @@
                                     <form action="editBanner.php" method="GET">
                                         <input type="hidden" value="<?=$result['id']?>" name="ID">
                                         <input type="hidden" value="1" name="Status">
-                                        <button class="w3-button w3-green" type="submit" onclick="document.getElementById('errorAddBanner').style.display='none'">
+                                        <button class="w3-button w3-green" type="submit">
                                             <i class="fa fa-edit icon-detail"></i>&nbsp;&nbsp;แก้ไขรายละเอียด
                                         </button>
                                     </form>
@@ -80,16 +80,27 @@
                                     <form action="editBanner.php" method="GET">
                                         <input type="hidden" value="<?=$result['id']?>" name="ID">
                                         <input type="hidden" value="2" name="Status">
-                                        <button class="w3-button w3-blue" type="submit" onclick="document.getElementById('errorAddBanner').style.display='none'">
+                                        <button class="w3-button w3-blue" type="submit">
                                             <i class="fa fa-search icon-detail"></i>&nbsp;&nbsp;ดูรายละเอียด
                                         </button>
                                     </form>
                                     &nbsp;
                                     <form action="src/backend/remove-banner.php" method="POST">
                                         <input type="hidden" value="<?=$result['id']?>" name="ID">
-                                        <button class="w3-button w3-red" type="submit" onclick="document.getElementById('errorAddBanner').style.display='none'">
+                                        <button class="w3-button w3-red" type="button" onclick="document.getElementById('confirmRemove').style.display='block'">
                                             <i class="fa fa-trash icon-detail"></i>&nbsp;&nbsp;ลบภาพเคลือนไหว
                                         </button>
+                                        <div id="confirmRemove" class="w3-modal">
+                                            <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+                                                <div class="w3-center"><br>
+                                                    <span onclick="document.getElementById('confirmRemove').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
+                                                    <label class="header"><font size="+3">ยืนยันการลบภาพเคลื่อนไหว</font></label><br>
+                                                    <label class="detail text-danger">อย่าลืมตรวจสอบภาพให้ถูกต้อง เพื่อผลประโยชน์ของระบบ</label>
+                                                </div>
+                                                <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit"><i class="fa fa-check icon-detail"></i>&nbsp;&nbsp;
+                                                ยืนยันการลบภาพเคลื่อนไหว</button>
+                                            </div>
+                                        </div>
                                     </form>
                                 </div>
                                 
