@@ -37,6 +37,12 @@
             <div class="col-10 offset-1">
 				<?php while($result=mysqli_fetch_array($query,MYSQLI_ASSOC)) { ?>
 					<div class="w3-card-4 w3-light-gray">
+						<?php
+							if($_SESSION["permission"] == 4) {
+								echo('<div class="col-12">&nbsp;</div>');
+								echo('<label class="header text-danger">Username นี้ถูกระงับการใช้งานชั่วคราว กรุณาติดต่อ Admin !</label>');
+							}
+						?>
 						<div class="col-12 text-center" style="padding-top: 2%">
 							<label class="header">ยินดีต้อนรับ</label>
 						</div>
