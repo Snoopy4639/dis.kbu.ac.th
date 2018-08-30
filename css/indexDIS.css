@@ -7,9 +7,6 @@ body {
 	font-family: 'Prompt', sans-serif;
 }
 
-label.detail {
-	font-family: 'Prompt', sans-serif;
-}
 label.header {
 	font-family: 'Prompt', sans-serif;
 	font-size: 130%;
@@ -21,9 +18,12 @@ label.header2 {
 	padding-top: 1%
 }
 
-p.detail {
+/* p.detail {
 	font-family: 'Prompt', sans-serif;
 	padding-top: 1.5%
+} */
+p.detail-2 {
+	font-family: 'Prompt', sans-serif;
 }
 
 i.icon-detail {

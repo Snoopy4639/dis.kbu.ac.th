@@ -17,11 +17,11 @@
     <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <style>
+    <!-- <style>
         body {
             font-family: 'Prompt', sans-serif;
         }
-    </style>
+    </style> -->
 </head>
 <body>
     <div w3-include-html="header.html"></div>
@@ -304,18 +304,65 @@
                                 
                                 $sql .=" order by id DESC LIMIT $row_start ,$row_end";
                                 $query = mysqli_query($conn,$sql);
+                                $n = 1;
                             ?>
                             <ul class="w3-ul w3-hoverable w3-white">
                                 <li class="w3-orange w3-padding-large text-center"><label class="header">รายการประกาศของหาย</label></li>
                                 <?php while($result=mysqli_fetch_array($query,MYSQLI_ASSOC)) { ?>
-                                    <a href="#"><li class="w3-padding-large">
+                                    <li class="w3-padding-large">
                                         <span class="w3-tag w3-green"><font size="-1">กำลังตามหา</font></span><label>&nbsp;&nbsp;</label><?php echo($result["item_name_lost"])?>
-                                        <label class="w3-right"><?php echo($result["date_record"])?></label>
-                                    </li></a>
-                                <?php } ?>
-                            <button onclick="myFunction('Demo1')" class="w3-button w3-white w3-block w3-center w3-hover-gray w3-padding-large">
+                                        <div class="w3-right">
+                                            <?php echo($result["date_record"])?>&nbsp;&nbsp;&nbsp;
+                                            <button class="w3-button w3-amber w3-small" type="button" onclick="return document.getElementById('<?php echo('infoItem').$n?>').style.display='block'">
+                                                <i class="fa fa-search"></i>&nbsp;&nbsp;ดูรายละเอียด
+                                            </button>
+                                        </div>
+                                    </li>
+                                    <div id="<?php echo('infoItem').$n?>" class="w3-modal">
+                                        <div class="container">
+                                            <div class="w3-modal-content w3-card-4 w3-animate-opacity" style="max-width:auto">
+                                                <div class="container">
+                                                    <div class="col-12">&nbsp;</div>
+                                                    <div class="text-center w3-gray">
+                                                        <label class="header">รายการประกาศของหายทั้งหมด</label>
+                                                    </div>
+                                                    <div class="col-12">&nbsp;</div>
+                                                    <div class="col-12">&nbsp;</div>
+                                                    <div class="w3-row-padding">
+                                                        <div class="w3-third">
+                                                            <label class="detail"><i class="fa fa-list icon-detail"></i>&nbsp;&nbsp;ชื่อสิ่งของ</label>
+                                                            <input name="itemNameInput" value="<?=$result["item_name_lost"]?>" class="w3-input w3-white" type="text" autocomplete="off" disabled>
+                                                        </div>
+                                                        <div class="w3-third">
+                                                            <label class="detail"><i class="fa fa-map-marker icon-detail"></i>&nbsp;&nbsp;สถานที่ที่คาดว่าของหาย</label>
+                                                            <input name="locationLostInput" value="<?=$result["item_location_lost"]?>" class="w3-input w3-white" type="text" autocomplete="off" disabled>
+                                                        </div>
+                                                        <div class="w3-third">
+                                                            <label class="detail"><i class="fa fa-calendar icon-detail"></i>&nbsp;&nbsp;วันที่ที่คาดว่าของหาย</label>
+                                                            <input name="dateLost" class="w3-input w3-white" value="<?=$result["date_lost"]?>" type="text" id="datepicker" autocomplete="off" disabled>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">&nbsp;</div>
+                                                    <div class="w3-row-padding">
+                                                        <label class="detail">&nbsp;&nbsp;<i class="fa fa-pencil icon-detail"></i>&nbsp;&nbsp;รายละเอียดสิ่งของที่พบ</label>
+                                                        <textarea name="itemDetailInput" class="w3-input w3-border w3-white" rows="5" col="5" resize="none" autocomplete="off" disabled><?php echo($result['item_detail_lost']);?></textarea>
+                                                    </div>
+                                                    <div class="col-12">&nbsp;</div>
+                                                    <label class="detail text-danger">ผู้ใดพบเห็นสิ่งของดังกล่าว ขอให้กรุณารีบแจ้งฝ่ายวินัยมหาวิทยาลัยเกษมบัณฑิต ทราบในทันที</label>
+                                                    <button class="w3-button w3-block w3-green w3-section w3-padding" type="button" onclick="document.getElementById('<?php echo('infoItem').$n?>').style.display='none'"><i class="fa fa-check icon-detail"></i>&nbsp;&nbsp;
+                                                    ปิด</button>
+                                                    <div class="col-12">&nbsp;</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php 
+                                    $n = $n +1;
+                                    } 
+                                ?>
+                            <a href="listLostAndFound_B.php"><button class="w3-button w3-white w3-block w3-center w3-hover-gray w3-padding-large">
                                 คลิ๊กเพื่อดูเพิ่มเติม&nbsp;&nbsp;<i class="fa fa-caret-down"></i>
-                            </button>
+                            </button></a>
                             </ul>
                         </div>
                     </div>

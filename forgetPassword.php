@@ -17,11 +17,11 @@
     <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <style>
+    <!-- <style>
         body {
             font-family: 'Prompt', sans-serif;
         }
-    </style>
+    </style> -->
 </head>
 <body>
     <div w3-include-html="header.html"></div>
