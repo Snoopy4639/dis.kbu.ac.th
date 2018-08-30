@@ -68,15 +68,31 @@
                         <div class="col-12">
                             <?php while($result=mysqli_fetch_array($queryBanner,MYSQLI_ASSOC)) { ?>
                                 <label class="header">ภาพเคลื่อนไหวภาพที่ : <?php echo($i." ".$result["banner_title"]);?></label><br>
-                                <button class="w3-button w3-green" type="button" onclick="document.getElementById('errorAddBanner').style.display='none'">
-                                    <i class="fa fa-edit icon-detail"></i>&nbsp;&nbsp;แก้ไขรายละเอียด
-                                </button>
-                                <button class="w3-button w3-blue" type="button" onclick="document.getElementById('errorAddBanner').style.display='none'">
-                                    <i class="fa fa-search icon-detail"></i>&nbsp;&nbsp;ดูรายละเอียด
-                                </button>
-                                <button class="w3-button w3-red" type="button" onclick="document.getElementById('errorAddBanner').style.display='none'">
-                                    <i class="fa fa-trash icon-detail"></i>&nbsp;&nbsp;ลบภาพเคลือนไหว
-                                </button>
+                                <div class="row">
+                                    <form action="editBanner.php" method="GET">
+                                        <input type="hidden" value="<?=$result['id']?>" name="ID">
+                                        <input type="hidden" value="1" name="Status">
+                                        <button class="w3-button w3-green" type="submit" onclick="document.getElementById('errorAddBanner').style.display='none'">
+                                            <i class="fa fa-edit icon-detail"></i>&nbsp;&nbsp;แก้ไขรายละเอียด
+                                        </button>
+                                    </form>
+                                    &nbsp;
+                                    <form action="editBanner.php" method="GET">
+                                        <input type="hidden" value="<?=$result['id']?>" name="ID">
+                                        <input type="hidden" value="2" name="Status">
+                                        <button class="w3-button w3-blue" type="submit" onclick="document.getElementById('errorAddBanner').style.display='none'">
+                                            <i class="fa fa-search icon-detail"></i>&nbsp;&nbsp;ดูรายละเอียด
+                                        </button>
+                                    </form>
+                                    &nbsp;
+                                    <form action="src/backend/remove-banner.php" method="GET">
+                                        <input type="hidden" value="<?=$result['id']?>" name="ID">
+                                        <button class="w3-button w3-red" type="submit" onclick="document.getElementById('errorAddBanner').style.display='none'">
+                                            <i class="fa fa-trash icon-detail"></i>&nbsp;&nbsp;ลบภาพเคลือนไหว
+                                        </button>
+                                    </form>
+                                </div>
+                                
                                 <div class="col-12">&nbsp;</div>
                                 <div class="carousel-item active">
                                     <img class="d-block w-100 img-fluid" src="src/backend/upload/banner/<?php echo($result["banner_pic_path"]);?>" style="width:800px; height:400px">
