@@ -17,6 +17,7 @@ function checkNewPassword() {
             document.getElementById('passwordChaError').style.display='block';
             document.SetPassword.password1.value = "";
             document.SetPassword.password2.value = "";
+            document.SetPassword.password3.value = "";
             document.SetPassword.password1.focus();
             return false;
         }
@@ -37,6 +38,7 @@ function checkNewPassword() {
             document.getElementById('confirmSave').style.display='none';
             document.getElementById('passwordNotMatch').style.display='block';
             document.SetPassword.password2.value = "";
+            document.SetPassword.password3.value = "";
             document.SetPassword.password2.focus();
             return false;
             }

@@ -33,17 +33,17 @@
             <div class="col-12">&nbsp;</div>
             <div class="col-10 offset-1">
 				<?php while($result=mysqli_fetch_array($query,MYSQLI_ASSOC)) { ?>
-                <div class="w3-card-4 w3-light-gray">
-                    <div class="col-12 text-center" style="padding-top: 2%">
-                        <label class="header">ยินดีต้อนรับ</label>
-                    </div>
-                    <div class="col-4 offset-4">
-						<img src="<?php echo('src/backend/upload/'.$result["profile_pic"])?>" class="img-fluid w3-border">
-                    </div>
-                    <div class="col-12">&nbsp;</div>
-                    <label class="header">อาจารย์<?php echo($result["first_name"]." ". $result["last_name"])?></label>
-                    <div class="col-12">&nbsp;</div>
-                </div>
+					<div class="w3-card-4 w3-light-gray">
+						<div class="col-12 text-center" style="padding-top: 2%">
+							<label class="header">ยินดีต้อนรับ</label>
+						</div>
+						<div class="col-4 offset-4">
+							<img src="<?php echo('src/backend/upload/'.$result["profile_pic"])?>" class="img-fluid w3-border">
+						</div>
+						<div class="col-12">&nbsp;</div>
+						<label class="header">อาจารย์<?php echo($result["first_name"]." ". $result["last_name"])?></label>
+						<div class="col-12">&nbsp;</div>
+					</div>
 				<?php } ?>
             </div>
         </div>
