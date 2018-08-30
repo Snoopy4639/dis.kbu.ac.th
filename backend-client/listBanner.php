@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <script src="/dis/js/includeHTML.js"></script>
     <script src="js/menuBar.js"></script>
+    <script src="src/js/form-register-student.js"></script>
 	<!-- Icon -->
     <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -52,6 +53,32 @@
             <?php } elseif ($_GET['status'] == 'view') {}?>
             <div class="col-12">&nbsp;</div>
             <div class="col-10 offset-1">
+                <label class="header">ข้อความเคลื่อนไหวในหน้าหลัก</label>
+                <?php
+                    $sqlTextBanner = 'SELECT * FROM NEWS_TEXT_BANNER';
+                    $queryTextBanner = mysqli_query($conn,$sqlTextBanner);
+                ?>
+                <div class="w3-card-4 w3-light-gray" style="padding-top:1%; padding-bottom:1%">
+                    <div class="container">
+                        <div class="card">
+                            <div class="card-body">
+                                <?php while($result=mysqli_fetch_array($queryTextBanner,MYSQLI_ASSOC)) { ?>
+                                    <marquee><?php echo('-- '.$result["banner_text"].' --');?></marquee>
+                                    <!-- <marquee>--- แผนกวินัยนักศึกษา มหาวิทยาลัยเกษมบัณฑิต ยินดีต้อนรับนักศึกษาทุกท่าน เข้าสู่รั้วมหาวิทยาลัยเกษมบัณฑิต ---</marquee> -->
+                                <?php } ?>
+                            </div>
+                        </div>
+                        <button class="w3-button w3-block w3-green w3-section w3-padding" type="button" onclick="openTab('addStudentReport')">
+                            <i class="fa fa-edit icon-detail"></i>&nbsp;&nbsp;แก้ไขข้อความเคลื่อนไหว
+                        </button>
+                    </div>
+                    <div id="addStudentReport" class="w3-container openTab" style="display:none">
+                        <div w3-include-html="<?php echo('src/editTextBanner.php')?>"></div>
+                        <div class="col-12">&nbsp;</div>
+                    </div>
+                </div>
+                
+                <div class="col-12">&nbsp;</div>
                 <label class="header">รายการภาพเคลื่อนไหวในหน้าหลัก</label>
                 <?php
                     $sqlBanner = 'SELECT * FROM NEWS_BANNER';

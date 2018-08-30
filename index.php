@@ -86,8 +86,15 @@
                         <div class="col-md-6 col-12">
                             <div class="container-fluid">
                                 <div class="card">
+                                    <?php
+                                        $sqlTextBanner = 'SELECT * FROM NEWS_TEXT_BANNER';
+                                        $queryTextBanner = mysqli_query($conn,$sqlTextBanner);
+                                    ?>
                                     <div class="card-body">
-                                       <marquee>--- แผนกวินัยนักศึกษา มหาวิทยาลัยเกษมบัณฑิต ยินดีต้อนรับนักศึกษาทุกท่าน เข้าสู่รั้วมหาวิทยาลัยเกษมบัณฑิต ---</marquee>
+                                        <?php while($result=mysqli_fetch_array($queryTextBanner,MYSQLI_ASSOC)) { ?>
+                                            <marquee><?php echo('-- '.$result["banner_text"].' --');?></marquee>
+                                            <!-- <marquee>--- แผนกวินัยนักศึกษา มหาวิทยาลัยเกษมบัณฑิต ยินดีต้อนรับนักศึกษาทุกท่าน เข้าสู่รั้วมหาวิทยาลัยเกษมบัณฑิต ---</marquee> -->
+                                        <?php } ?>
                                     </div>
                                 </div>
                                 <div class="col-12">&nbsp;</div>
