@@ -224,48 +224,55 @@
                                                 <?php echo($result["item_name"])?>
                                             </label>
                                             <div class="col-12">&nbsp;</div>
-                                            <button class="w3-button w3-block w3-blue" type="button" onclick="return document.getElementById('loginModal').style.display='block'">
+                                            <button class="w3-button w3-block w3-blue" type="button" onclick="return document.getElementById('<?php echo('infoItem').$i?>').style.display='block'">
                                                 <i class="fa fa-search"></i>&nbsp;&nbsp;ดูรายละเอียด
                                             </button>
                                         </div>
 
-                                        <div id="loginModal" class="w3-modal">
-                                            <div class="w3-container">
-                                                <div class="w3-modal-content w3-card-4 w3-animate-opacity" style="max-width:600px">
-                                                    <div class="w3-center"><br>
-                                                        <span onclick="document.getElementById('loginModal').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
-                                                        <img src="photo/index/login_icon.png" alt="Avatar" style="width:30%" class="w3-circle w3-margin-top">
-                                                    </div>
-                                                    <div class="col-12">&nbsp;</div>
-                                                    <form class="w3-container" action="src/login.php" method="POST">
-                                                        <div class="w3-section">
-                                                            <div class="container">
-                                                                <div class="row">
-                                                                    <div class="col-6">
-                                                                        <label class="detail">Username</label>
-                                                                        <input class="w3-input w3-margin-bottom" type="text" placeholder="Enter Username" name="userNameLoginInput" required>
-                                                                    </div>
-                                                                    <div class="col-6">
-                                                                        <label class="detail">Password</label>
-                                                                        <input class="w3-input" type="password" placeholder="Enter Password" name="passwordLoginInput" required>
-                                                                    </div>
-                                                                </div>
+                                        <div id="<?php echo('infoItem').$i?>" class="w3-modal">
+                                            <div class="container">
+                                                <div class="w3-modal-content w3-card-4 w3-animate-opacity" style="max-width:auto">
+                                                    <div class="container">
+                                                        <div class="col-12">&nbsp;</div>
+                                                        <div class="text-center w3-gray">
+                                                            <label class="header">รายละเอียดสิ่งของที่พบ</label>
+                                                        </div>
+                                                        <div class="col-12">&nbsp;</div>
+                                                        <div class="col-12">&nbsp;</div>
+                                                        <div class="w3-row-padding">
+                                                            <div class="w3-third">
+                                                                <label class="detail"><i class="fa fa-list icon-detail"></i>&nbsp;&nbsp;ชื่อสิ่งของ</label>
+                                                                <input name="itemNameInput" value="<?=$result["item_name"]?>" class="w3-input w3-white" type="text" autocomplete="off" disabled>
+                                                            </div>
+                                                            <div class="w3-third">
+                                                                <label class="detail"><i class="fa fa-map-marker icon-detail"></i>&nbsp;&nbsp;สถานที่ที่พบสิ่งของ</label>
+                                                                <input name="locationLostInput" value="<?=$result["item_location_found"]?>" class="w3-input w3-white" type="text" autocomplete="off" disabled>
+                                                            </div>
+                                                            <div class="w3-third">
+                                                                <label class="detail"><i class="fa fa-calendar icon-detail"></i>&nbsp;&nbsp;วันที่พบสิ่งของ</label>
+                                                                <input name="dateLost" class="w3-input w3-white" value="<?=$result["item_date_found"]?>" type="text" id="datepicker" autocomplete="off" disabled>
                                                             </div>
                                                         </div>
-                                                        <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit"><label class="detail">เข้าสู่ระบบ</label></button>
-                                                    </form>
-                                                    <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
-                                                        <a href="#"><label class="detail w3-hide-small w3-right">ลืมรหัสผ่าน ?</label></a>
+                                                        <div class="col-12">&nbsp;</div>
+                                                        <div class="w3-row-padding">
+                                                            <label class="detail">&nbsp;&nbsp;<i class="fa fa-pencil icon-detail"></i>&nbsp;&nbsp;รายละเอียดสิ่งของที่พบ</label>
+                                                            <textarea name="itemDetailInput" class="w3-input w3-border w3-white" rows="5" col="5" resize="none" autocomplete="off" disabled><?php echo($result['item_detail']);?></textarea>
+                                                        </div>
+                                                        <div class="col-12">&nbsp;</div>
+                                                        <label class="detail text-danger">ผู้ใดเป็นเจ้าของ นำบัตรนักศึกษา / บัตรประชาชน มายื่นเพือรับสิ่งของคืน ที่แผนกวินัยมหาวิทยาลัยเกษมบัณฑิต ในเวลาทำการ</label>
+                                                        <button class="w3-button w3-block w3-green w3-section w3-padding" type="button" onclick="document.getElementById('<?php echo('infoItem').$i?>').style.display='none'"><i class="fa fa-check icon-detail"></i>&nbsp;&nbsp;
+                                                        ปิด</button>
+                                                        <div class="col-12">&nbsp;</div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     <?php $i = $i-1; } ?>
-                                    <button onclick="myFunction('Demo1')" class="w3-button w3-white w3-block w3-center w3-hover-gray w3-padding-large">
-                                        คลิ๊กเพื่อดูเพิ่มเติม&nbsp;&nbsp;<i class="fa fa-caret-down"></i>
-                                    </button>
                                 </div>
                             </div>
+                            <a href="listLostAndFound_A.php"><button class="w3-btn w3-block w3-white w3-hover-gray w3-padding-large" type="button">
+                                คลิ๊กเพื่อดูเพิ่มเติม&nbsp;&nbsp;<i class="fa fa-caret-down"></i>
+                            </button></a>
                         </div>
 
                         <div class="col-12">&nbsp;</div>
@@ -324,7 +331,7 @@
                                                 <div class="container">
                                                     <div class="col-12">&nbsp;</div>
                                                     <div class="text-center w3-gray">
-                                                        <label class="header">รายการประกาศของหายทั้งหมด</label>
+                                                        <label class="header">รายการประกาศของหาย</label>
                                                     </div>
                                                     <div class="col-12">&nbsp;</div>
                                                     <div class="col-12">&nbsp;</div>

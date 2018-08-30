@@ -23,10 +23,10 @@
         <div class="container-fluid">
             <div class="w3-card-4 w3-white">
                 <div class="text-center w3-gray">
-                    <label class="header">รายการประกาศของหายทั้งหมด</label>
+                    <label class="header">รายการของหายทั้งหมด</label>
                 </div>
                 <?php
-                    $sql = 'SELECT * FROM LOST_AND_FOUND_B';
+                    $sql = 'SELECT * FROM LOST_AND_FOUND_A';
                     $query = mysqli_query($conn,$sql);
                     $num_rows = mysqli_num_rows($query);
 
@@ -65,21 +65,22 @@
                     <div class="row">
                     <?php while($result=mysqli_fetch_array($query,MYSQLI_ASSOC)) { ?>
                         <div class="col-md-4 col-4 text-center w3-hover-gray w3-border" style="padding-bottom: 1%; padding-top: 1%">
+                            <img src="<?php echo("backend-client/src/backend/upload/lost_and_found_A/".$result["item_pic_path"])?>" class="img-fluid lost-and-found-A">
                             <label class="detail" style="margin-top: 5%">
-                                <?php if($result['item_status'] == 3) { ?>
+                                <?php if($result['item_status'] == 1) { ?>
                                     <div class="col-12 w3-green">
-                                       <label class="header">กำลังตามหา</label>
+                                       <label class="header">กำลังตามหาเจ้าของ</label>
                                     </div>
                                 <?php } ?>
-                                <?php if($result['item_status'] == 4) { ?>
+                                <?php if($result['item_status'] == 2) { ?>
                                     <div class="col-12 w3-red">
-                                       <label class="header">หาพบแล้ว</label>
+                                       <label class="header">หาเจ้าของเจอแล้ว</label>
                                     </div>
                                 <?php } ?>
                                 <br>
-                                สื่งของ : <?php echo($result["item_name_lost"])?><br>
-                                สถานที่ทำหาย : <?php echo($result["item_location_lost"])?><br>
-                                วันที่คาดว่าหาย : <?php echo($result["date_lost"])?><br>
+                                สื่งของ : <?php echo($result["item_name"])?><br>
+                                สถานที่พบสิ่งของ : <?php echo($result["item_location_found"])?><br>
+                                วันที่พบสิ่งของ : <?php echo($result["item_date_found"])?><br>
                             </label>
                             <div class="col-12">&nbsp;</div>
                             <button class="w3-button w3-block w3-blue" type="button" onclick="return document.getElementById('<?php echo('infoItem').$n?>').style.display='block'">
@@ -92,31 +93,31 @@
                                     <div class="container">
                                         <div class="col-12">&nbsp;</div>
                                         <div class="text-center w3-gray">
-                                            <label class="header">รายละเอียดสิ่งของที่หาย</label>
+                                            <label class="header">รายละเอียดสิ่งของที่พบ</label>
                                         </div>
                                         <div class="col-12">&nbsp;</div>
                                         <div class="col-12">&nbsp;</div>
                                         <div class="w3-row-padding">
                                             <div class="w3-third">
                                                 <label class="detail"><i class="fa fa-list icon-detail"></i>&nbsp;&nbsp;ชื่อสิ่งของ</label>
-                                                <input name="itemNameInput" value="<?=$result["item_name_lost"]?>" class="w3-input w3-white" type="text" autocomplete="off" disabled>
+                                                <input name="itemNameInput" value="<?=$result["item_name"]?>" class="w3-input w3-white" type="text" autocomplete="off" disabled>
                                             </div>
                                             <div class="w3-third">
-                                                <label class="detail"><i class="fa fa-map-marker icon-detail"></i>&nbsp;&nbsp;สถานที่ที่คาดว่าของหาย</label>
-                                                <input name="locationLostInput" value="<?=$result["item_location_lost"]?>" class="w3-input w3-white" type="text" autocomplete="off" disabled>
+                                                <label class="detail"><i class="fa fa-map-marker icon-detail"></i>&nbsp;&nbsp;สถานที่ที่พบสิ่งของ</label>
+                                                <input name="locationLostInput" value="<?=$result["item_location_found"]?>" class="w3-input w3-white" type="text" autocomplete="off" disabled>
                                             </div>
                                             <div class="w3-third">
-                                                <label class="detail"><i class="fa fa-calendar icon-detail"></i>&nbsp;&nbsp;วันที่ที่คาดว่าของหาย</label>
-                                                <input name="dateLost" class="w3-input w3-white" value="<?=$result["date_lost"]?>" type="text" id="datepicker" autocomplete="off" disabled>
+                                                <label class="detail"><i class="fa fa-calendar icon-detail"></i>&nbsp;&nbsp;วันที่พบสิ่งของ</label>
+                                                <input name="dateLost" class="w3-input w3-white" value="<?=$result["item_date_found"]?>" type="text" id="datepicker" autocomplete="off" disabled>
                                             </div>
                                         </div>
                                         <div class="col-12">&nbsp;</div>
                                         <div class="w3-row-padding">
-                                            <label class="detail">&nbsp;&nbsp;<i class="fa fa-pencil icon-detail"></i>&nbsp;&nbsp;รายละเอียดสิ่งของที่หาย</label>
-                                            <textarea name="itemDetailInput" class="w3-input w3-border w3-white" rows="5" col="5" resize="none" autocomplete="off" disabled><?php echo($result['item_detail_lost']);?></textarea>
+                                            <label class="detail">&nbsp;&nbsp;<i class="fa fa-pencil icon-detail"></i>&nbsp;&nbsp;รายละเอียดสิ่งของที่พบ</label>
+                                            <textarea name="itemDetailInput" class="w3-input w3-border w3-white" rows="5" col="5" resize="none" autocomplete="off" disabled><?php echo($result['item_detail']);?></textarea>
                                         </div>
                                         <div class="col-12">&nbsp;</div>
-                                        <label class="detail text-danger">ผู้ใดพบเห็นสิ่งของดังกล่าว ขอให้กรุณารีบแจ้งฝ่ายวินัยมหาวิทยาลัยเกษมบัณฑิต ทราบในทันที</label>
+                                        <label class="detail text-danger">ผู้ใดเป็นเจ้าของ นำบัตรนักศึกษา / บัตรประชาชน มายื่นเพือรับสิ่งของคืน ที่แผนกวินัยมหาวิทยาลัยเกษมบัณฑิต ในเวลาทำการ</label>
                                         <button class="w3-button w3-block w3-green w3-section w3-padding" type="button" onclick="document.getElementById('<?php echo('infoItem').$n?>').style.display='none'"><i class="fa fa-check icon-detail"></i>&nbsp;&nbsp;
                                         ปิด</button>
                                         <div class="col-12">&nbsp;</div>
