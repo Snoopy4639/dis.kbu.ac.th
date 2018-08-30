@@ -6,6 +6,7 @@
     $lastNameInput = trim($_REQUEST["lastNameInput"]);
     $emailInput = trim($_REQUEST["emailInput"]);
     $phoneNumberInput = trim($_REQUEST["phoneInput"]);
+    $fromMyProfile = $_REQUEST["fromMyProfile"];
 
     // Connect DB.
     include 'connectDB.php';
@@ -19,6 +20,10 @@
 
     mysqli_close($conn);
 
-    $save = true;
-    header("location: /dis/backend-client/listUser.php?status=".$save);
+    if ($fromMyProfile == true) {
+        header("location: /dis/backend-client/index.php");
+    } else {
+        $save = true;
+        header("location: /dis/backend-client/listUser.php?status=".$save);
+    }
 ?>

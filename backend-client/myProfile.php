@@ -76,7 +76,7 @@
                                                     <div class="col-6">
                                                         <i class="fa fa-key icon-detail"></i>&nbsp;&nbsp;
                                                         <label class="detail">สถานะในระบบ</label>
-                                                        <select class="form-control" name="statusInput" <?php if($status == 2) { echo('disabled'); }?> > 
+                                                        <select class="form-control" name="statusInput" disabled> 
                                                             <?php switch($result['group_status']) {
                                                                 case 0: ?>
                                                                     <option value="0" selected >God Mode</option>
@@ -166,10 +166,11 @@
                                 </div>
                                 <div class="col-12">&nbsp;</div>
                                 <input type="hidden" value="<?=$id?>" name="idStatus">
+                                <input type="hidden" value="true" name="fromMyProfile">
                                 <div class="col-12 text-center">
                                     <?php if($status == 1) {?>
                                     <button class="w3-button w3-green" type="submit">
-                                        <i class="fa fa-check icon-detail"></i>&nbsp;&nbsp;แก้ไข
+                                        <i class="fa fa-check icon-detail"></i>&nbsp;&nbsp;แก้ไขข้อมูล
                                     </button>
                                     <a href="listUser.php?status=view/"><button class="w3-button w3-gray" type="button">
                                        <i class="fa fa-close icon-detail"></i>&nbsp;&nbsp;ยกเลิก
