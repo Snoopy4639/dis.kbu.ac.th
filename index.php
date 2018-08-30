@@ -42,22 +42,35 @@
                 <?php } ?>
                 <div class="col-12">&nbsp;</div>
                 <div class="w3-card-4 w3-light-gray" style="padding:2% 2% 2% 2%">
+                    <?php
+                        $sqlBanner = 'SELECT * FROM NEWS_BANNER';
+                        $queryBanner = mysqli_query($conn,$sqlBanner);
+                        $numBanner_rows = mysqli_num_rows($queryBanner);
+
+                        $i = 1;
+                    ?>
                     <div class="row">
                         <div class="col-md-6 col-12">
                             <div class="container-fluid">   
                                 <div id="PRbanner" class="carousel slide" data-ride="carousel" style="max-width: auto; max-height:auto">
                                     <div class="carousel-inner">
-                                        <div class="carousel-item active">
-                                            <img class="d-block w-100 img-fluid" src="photo/index/800x400.png">
-                                            <div class="carousel-caption d-none d-md-block">
-                                                <h5>Test 01</h5>
-                                                <p>สวัสดีชาวโลก</p>
-                                            </div>
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img class="d-block w-100 img-fluid" src="photo/index/800x400.png">
+                                        <?php while($result=mysqli_fetch_array($queryBanner,MYSQLI_ASSOC)) { ?>
+                                        <div class="carousel-item <?php if($i == 1) {echo('active');}?>">
+                                            <img class="d-block w-100 img-fluid" src="backend-client/src/backend/upload/banner/<?php echo($result["banner_pic_path"]);?>" style="width:800px; height:400px">
+                                            <?php if(($result["banner_title"] != "") || ($result["banner_detail"] != "")) {?>
+                                                <div class="w3-display-bottomleft w3-container w3-padding-16 w3-black">
+                                                    <?php if($result["banner_title"] != "") { ?>
+                                                        <label class="mini-header"><?php echo($result["banner_title"]);?></label><br>
+                                                    <?php }?>
+                                                    <?php if($result["banner_detail"] != "") { ?>
+                                                        <label class="detail"><?php echo($result["banner_detail"]);?></label>
+                                                    <?php } ?>
+                                                </div>
+                                            <?php } ?>
                                         </div>
                                         <!-- Add Photo Banner in here ! -->
+                                        <?php $i = $i + 1; ?>
+                                        <?php } ?>
                                     </div>
                                     <a class="carousel-control-prev" href="#PRbanner" role="button" data-slide="prev">
                                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
