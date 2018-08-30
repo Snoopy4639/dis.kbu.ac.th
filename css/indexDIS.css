@@ -1,0 +1,65 @@
+@charset "utf-8";
+/* CSS Document */
+
+/**/
+
+body {
+	font-family: 'Prompt', sans-serif;
+}
+
+label.detail {
+	font-family: 'Prompt', sans-serif;
+}
+label.header {
+	font-family: 'Prompt', sans-serif;
+	font-size: 130%;
+	padding-top: 1%
+}
+label.header2 {
+	font-family: 'Prompt', sans-serif;
+	font-size: 150%;
+	padding-top: 1%
+}
+
+p.detail {
+	font-family: 'Prompt', sans-serif;
+	padding-top: 1.5%
+}
+
+i.icon-detail {
+    font-size: 24px; 
+}
+
+img.logo-img-md {
+    max-width: 75%;
+}
+
+img.lost-and-found-A {
+	/* max-width: 80%; */
+	width: 350px;
+	height: 220px;
+}
+
+/* Responed Code !! */
+@media (max-width: 991px) {
+	md-body {
+		display: none;
+	}
+	md-footer {
+		display: none;
+	}
+	sm-body {
+		display: block;
+	}
+	sm-footer {
+		display: block;
+	}
+}
+@media (min-width: 992px) {
+	sm-body {
+		display: none;
+	}
+	sm-footer {
+		display: none;
+	}
+}

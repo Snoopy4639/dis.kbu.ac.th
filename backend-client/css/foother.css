@@ -1,0 +1,38 @@
+@charset "utf-8";
+/* CSS Document */
+
+/**/
+
+label.detail {
+	font-family: 'Prompt', sans-serif;
+	padding-top: 2%;
+	padding-bottom: 2%
+}
+label.header {
+    font-family: 'Prompt', sans-serif;
+    font-size: 150%
+}
+
+/* Responed Code !! */
+@media (max-width: 991px) {
+	md-body {
+		display: none;
+	}
+	md-footer {
+		display: none;
+	}
+	sm-body {
+		display: block;
+	}
+	sm-footer {
+		display: block;
+	}
+}
+@media (min-width: 992px) {
+	sm-body {
+		display: none;
+	}
+	sm-footer {
+		display: none;
+	}
+}

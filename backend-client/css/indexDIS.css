@@ -1,0 +1,37 @@
+@charset "utf-8";
+/* CSS Document */
+
+/**/
+
+label.detail {
+	font-family: 'Prompt', sans-serif;
+}
+p.detail {
+	font-family: 'Prompt', sans-serif;
+}
+img.upload-profile {
+	max-width: 100pt;
+}
+/* Responed Code !! */
+@media (max-width: 991px) {
+	md-body {
+		display: none;
+	}
+	md-footer {
+		display: none;
+	}
+	sm-body {
+		display: block;
+	}
+	sm-footer {
+		display: block;
+	}
+}
+@media (min-width: 992px) {
+	sm-body {
+		display: none;
+	}
+	sm-footer {
+		display: none;
+	}
+}

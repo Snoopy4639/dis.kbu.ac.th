@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" content="width=device-width, initial-scale=1" name="viewport">
+	<!-- Font ! -->
+	<link href="https://fonts.googleapis.com/css?family=Prompt" rel="stylesheet">
+	<!-- CN css -->
+	<link rel="stylesheet" type="text/css" href="css/indexDIS.css">
+	<!--Bootstap 4 -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+	<!-- W3 -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="js/includeHTML.js"></script>
+	<!-- Icon -->
+    <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+    <style>
+        body {
+            font-family: 'Prompt', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="w3-amber">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">&nbsp;</div>
+                <div class="col-2 offset-md-1 text-center" style="margin-top: 2%">
+                    <img src="photo/logo2.png" class="img-fluid">                        
+                </div>
+                <div class="col-md-8">
+                    <div class="col-12">&nbsp;</div>
+                    <md-body>
+                        <div class="col-12">&nbsp;</div>
+                        <label class="header"><font size="+3">แผนกวินัยนักศึกษา</font> มหาวิทยาลัยเกษมบัณฑิต</label>
+                        <div class="w3-card-4">
+                            <div class="w3-bar w3-white">
+                                <a href="#" class="w3-bar-item w3-button w3-orange"><label class="detail">หน้าหลัก</label></a>
+                                <a href="#" class="w3-bar-item w3-button"><label class="detail">บุคคลากร</label></a>
+                                <a href="#" class="w3-bar-item w3-button"><label class="detail">ระเบียบการแต่งกาย</label></a>
+                                <a href="#" class="w3-bar-item w3-button"><label class="detail">เกี่ยวกับแผนก</label></a>
+                                <button type="button" class="w3-button w3-green w3-right" onclick="document.getElementById('loginModal').style.display='block'">
+                                    <label class="detail">เข้าสู่ระบบ</label>
+                                </button>
+                            </div>
+                        </div>
+                        <div id="loginModal" class="w3-modal">
+                            <div class="w3-container">
+                                <div class="w3-modal-content w3-card-4 w3-animate-opacity" style="max-width:600px">
+                                    <div class="w3-center"><br>
+                                        <span onclick="document.getElementById('loginModal').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
+                                        <img src="photo/index/login_icon.png" alt="Avatar" style="width:30%" class="w3-circle w3-margin-top">
+                                    </div>
+                                    <div class="col-12">&nbsp;</div>
+                                    <form class="w3-container" action="src/login.php" method="POST">
+                                        <div class="w3-section">
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <label class="detail">Username</label>
+                                                        <input class="w3-input w3-margin-bottom" type="text" placeholder="Enter Username" name="userNameLoginInput" autocomplete="off" required>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <label class="detail">Password</label>
+                                                        <input class="w3-input" type="password" placeholder="Enter Password" name="passwordLoginInput" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit"><label class="detail">เข้าสู่ระบบ</label></button>
+                                    </form>
+                                    <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+                                        <a href="#"><label class="detail w3-hide-small w3-right">ลืมรหัสผ่าน ?</label></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">&nbsp;</div>
+                        <div class="col-12">&nbsp;</div>
+                    </div>
+                    </md-body>
+                    <sm-body>
+                        <div class="col-12">
+                            <div class="text-center">
+                                <label class="header"><font size="+3">แผนกวินัยนักศึกษา</font>
+                                <br>มหาวิทยาลัยเกษมบัณฑิต</label>
+                            </div>
+                            <div class="col-12">&nbsp;</div>
+                            <div class="w3-card-4">
+                                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                                    <a class="navbar-brand"><label class="detail">เมนู</label></a>
+                                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sm-nav" aria-controls="sm-nav" aria-expanded="false" aria-label="Toggle navigation">
+                                        <span class="navbar-toggler-icon"></span>
+                                    </button>
+                                    <div class="collapse navbar-collapse" id="sm-nav">
+                                        <ul class="navbar-nav">
+                                            <li class="nav-item active">
+                                                <a class="nav-link" href="#sm-home">
+                                                    <label class="detail">
+                                                        <i data-feather="home"></i> &nbsp;
+                                                        หน้าแรก <span class="sr-only">(current)</span>
+                                                    </label>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" data-toggle="modal" data-target="#">
+                                                    <label class="detail">
+                                                        <i data-feather="users"></i> &nbsp;
+                                                        บุคคลากร
+                                                    </label>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" data-toggle="modal" data-target="#">
+                                                    <label class="detail">
+                                                        <i data-feather="check"></i> &nbsp;
+                                                        ระเบียบการแต่งกาย
+                                                    </label>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" data-toggle="modal" data-target="#">
+                                                    <label class="detail">
+                                                        <i data-feather="info"></i> &nbsp;
+                                                        เกี่ยวกับแผนก
+                                                    </label>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" data-toggle="modal" data-target="#" onclick="document.getElementById('loginModal').style.display='block'">
+                                                    <label class="detail">
+                                                        <i data-feather="log-in"></i> &nbsp;
+                                                        เข้าสู่ระบบ
+                                                    </label>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </nav>
+                            </div>  
+                        </div>
+                    </sm-body>
+                </div>
+                <div class="col-12">&nbsp;</div>
+            </div>            
+        </div>
+    </div>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+	<!-- Icon -->
+	<script>
+      feather.replace()
+    </script>
+    <!-- include html -->
+    <script>
+        includeHTML();
+    </script>
+</body>
+</html>

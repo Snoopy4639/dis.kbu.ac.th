@@ -1,0 +1,47 @@
+@charset "utf-8";
+/* CSS Document */
+
+/**/
+
+label.detail {
+	font-family: 'Prompt', sans-serif;
+}
+label.header {
+    font-family: 'Prompt', sans-serif;
+    font-size: 150%
+}
+p.detail {
+	font-family: 'Prompt', sans-serif;
+	padding-left: 1%;
+}
+
+img.logo-img-md {
+    max-width: 80%;
+}
+img.logo-img-sm {
+    max-width: 50%;
+}
+
+/* Responed Code !! */
+@media (max-width: 991px) {
+	md-body {
+		display: none;
+	}
+	md-footer {
+		display: none;
+	}
+	sm-body {
+		display: block;
+	}
+	sm-footer {
+		display: block;
+	}
+}
+@media (min-width: 992px) {
+	sm-body {
+		display: none;
+	}
+	sm-footer {
+		display: none;
+	}
+}

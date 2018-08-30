@@ -1,0 +1,38 @@
+@charset "utf-8";
+/* CSS Document */
+
+/**/
+
+label.detail {
+    font-family: 'Prompt', sans-serif;
+    padding-top: 3%;
+    font-size: 90%
+}
+
+i.icon-detail {
+    font-size: 24px; 
+}
+
+/* Responed Code !! */
+@media (max-width: 991px) {
+	md-body {
+		display: none;
+	}
+	md-footer {
+		display: none;
+	}
+	sm-body {
+		display: block;
+	}
+	sm-footer {
+		display: block;
+	}
+}
+@media (min-width: 992px) {
+	sm-body {
+		display: none;
+	}
+	sm-footer {
+		display: none;
+	}
+}
