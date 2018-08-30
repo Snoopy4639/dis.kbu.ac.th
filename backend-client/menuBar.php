@@ -79,7 +79,7 @@
                 </div>
             </div>
         <?php } ?>
-        <?php if ($Permission != 4) { ?>
+        <?php if ($Permission == 0 || $Permission == 1 || $Permission == 2) { ?>
             <div class="w3-dropdown-hover">
                 <button class="w3-button">
                     <i class="fa fa-users icon-detail"></i>&nbsp;&nbsp;

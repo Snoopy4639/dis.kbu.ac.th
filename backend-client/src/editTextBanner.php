@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <?php
     session_start(); 
-    // $id = 1;
+	if($_SESSION["permission"] == 2 || $_SESSION["permission"] == 3 || $_SESSION["permission"] == 4 || $_SESSION["permission"] == 5) {
+        header("location: /dis/backend-client/index.php");
+    }
 
     include 'backend/connectDB.php';
     $sql = 'SELECT * FROM NEWS_TEXT_BANNER';

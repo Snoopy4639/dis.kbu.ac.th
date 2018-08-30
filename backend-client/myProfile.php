@@ -3,6 +3,10 @@
 <head>
     <?php
         session_start(); 
+        if($_SESSION["permission"] == 3 || $_SESSION["permission"] == 5) {
+            header("location: /dis/backend-client/index.php");
+        }
+
         $id = $_GET["id"];
         $status = $_GET["status"];
 

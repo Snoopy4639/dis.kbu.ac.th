@@ -1,8 +1,14 @@
 <!DOCTYPE html>
+<?php
+    session_start();
+    
+	if($_SESSION["permission"] == 2 || $_SESSION["permission"] == 3 || $_SESSION["permission"] == 4 || $_SESSION["permission"] == 5) {
+        header("location: /dis/backend-client/index.php");
+    }
+?>
 <html>
 <head>
-    <?php
-        session_start(); 
+    <?php 
         $id = $_REQUEST["ID"];
         $status = $_REQUEST["Status"];
 
