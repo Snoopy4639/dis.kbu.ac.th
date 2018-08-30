@@ -85,7 +85,7 @@
                                         </button>
                                     </form>
                                     &nbsp;
-                                    <form action="src/backend/remove-banner.php" method="GET">
+                                    <form action="src/backend/remove-banner.php" method="POST">
                                         <input type="hidden" value="<?=$result['id']?>" name="ID">
                                         <button class="w3-button w3-red" type="submit" onclick="document.getElementById('errorAddBanner').style.display='none'">
                                             <i class="fa fa-trash icon-detail"></i>&nbsp;&nbsp;ลบภาพเคลือนไหว
