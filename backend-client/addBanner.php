@@ -70,7 +70,7 @@
                                 <div class="col-md-12 text-center">
                                     <div class="w3-card-2 w3-white">
                                         <div class="col-12">&nbsp;</div>
-                                        <img id="profile_image" src="../photo/index/800x400.png" class="img-fluid">
+                                        <img id="profile_image" class="img-fluid">
                                         <div class="col-12">&nbsp;</div>
                                         <label class="mini-header text-danger">คำแนะนำ : ควรใช้รูปภาพขนาด 800 x 400 px. เพื่อความสวยงาม</label>
                                         <div class="col-12">&nbsp;</div>

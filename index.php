@@ -121,7 +121,7 @@
                                 <div class="w3-card" style="max-width: auto; max-height:auto">
                                     <ul class="w3-ul w3-border w3-hoverable">
                                         <li class="w3-blue w3-padding-large"><label class="header">ข่าวประชาสัมพันธ์</label>
-                                            <a href="#" class="w3-right" style="margin-top: 1%">
+                                            <a href="listNewsAll.php" class="w3-right" style="margin-top: 1%">
                                                 <button class="btn btn-outline-light" type="button">
                                                     <i class="fa fa-search"></i>&nbsp;&nbsp;อ่านเพิ่มเติม
                                                 </button>
@@ -132,7 +132,7 @@
                                             $query = mysqli_query($conn,$sql);
                                             while($result=mysqli_fetch_array($query,MYSQLI_ASSOC)) {
                                         ?>
-                                            <a href="#"><li class="w3-padding-large">
+                                            <a href="<?php echo('newsInfo.php?id='.$result['id']);?>"><li class="w3-padding-large">
                                                 <?php echo($result["news_title"]);?>
                                                 <label class="w3-right"><?php echo($result["news_date"]);?></label>
                                             </li></a>

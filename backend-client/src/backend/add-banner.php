@@ -8,7 +8,7 @@
 
     // Upload item_image .jpg/.png/.jpeg
     $type = pathinfo(basename($_FILES['itemPicUpload']['name']), PATHINFO_EXTENSION);
-    if($type == "jpg" || $type == "jpeg" || $type == "PNG") {
+    if($type == "jpg" || $type == "jpeg" || $type == "PNG" || $type == "png") {
         $generateName = 'img_'.uniqid().'.'.$type;
         $folderPath = 'upload/banner/';
         $uploadPath = $folderPath.$generateName;
@@ -43,6 +43,6 @@
         $save = 'error';
         header("location: /dis/backend-client/addBanner.php?status=".$save);
     } else {
-        header("location: /dis/backend-client/listNews.php?status=view");
+        header("location: /dis/backend-client/listBanner.php?status=view");
     }
 ?>

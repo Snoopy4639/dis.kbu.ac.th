@@ -113,13 +113,13 @@
                                     &nbsp;
                                     <form action="src/backend/remove-banner.php" method="POST">
                                         <input type="hidden" value="<?=$result['id']?>" name="ID">
-                                        <button class="w3-button w3-red" type="button" onclick="document.getElementById('confirmRemove').style.display='block'">
+                                        <button class="w3-button w3-red" type="button" onclick="document.getElementById('<?php echo('confirmRemove'.$i)?>').style.display='block'">
                                             <i class="fa fa-trash icon-detail"></i>&nbsp;&nbsp;ลบภาพเคลือนไหว
                                         </button>
-                                        <div id="confirmRemove" class="w3-modal">
+                                        <div id="<?php echo('confirmRemove'.$i)?>" class="w3-modal">
                                             <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
                                                 <div class="w3-center"><br>
-                                                    <span onclick="document.getElementById('confirmRemove').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
+                                                    <span onclick="document.getElementById('<?php echo('confirmRemove'.$i)?>').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
                                                     <label class="header"><font size="+3">ยืนยันการลบภาพเคลื่อนไหว</font></label><br>
                                                     <label class="detail text-danger">อย่าลืมตรวจสอบภาพให้ถูกต้อง เพื่อผลประโยชน์ของระบบ</label>
                                                 </div>

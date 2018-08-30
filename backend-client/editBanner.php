@@ -9,7 +9,6 @@
 <html>
 <head>
     <?php
-        session_start(); 
         $id = $_REQUEST["ID"];
         $status = $_REQUEST["Status"];
 
