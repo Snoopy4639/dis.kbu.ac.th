@@ -88,7 +88,7 @@
                                             </a>
                                         </li>
                                         <?php
-                                            $sql = 'SELECT * FROM NEWS WHERE news_type LIKE 2';
+                                            $sql = 'SELECT * FROM NEWS WHERE news_type LIKE 2 order by id DESC';
                                             $query = mysqli_query($conn,$sql);
                                             while($result=mysqli_fetch_array($query,MYSQLI_ASSOC)) {
                                         ?>

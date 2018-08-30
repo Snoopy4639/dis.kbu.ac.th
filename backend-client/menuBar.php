@@ -66,12 +66,15 @@
                     <label class="detail">จัดการข่าวประชาสัมพันธ์</label>&nbsp;
                     <i class="fa fa-caret-down"></i>
                 </button>
-                <div class="w3-dropdown-content w3-bar-block">
+                <div class="w3-dropdown-content w3-bar-block" style="width:auto">
                     <a href="addNews.php?status=0" class="w3-bar-item w3-button w3-border" onclick="openTab('Home', 'Fade')">
                         <label class="detail">เพิ่มข่าวประชาสัมพันธ์</label>
                     </a>
                     <a href="listNews.php?status=view" class="w3-bar-item w3-button w3-border" onclick="openTab('Home', 'Fade')">
                         <label class="detail">แก้ไขข่าวประชาสัมพันธ์</label>
+                    </a>
+                    <a href="listBanner.php?status=view" class="w3-bar-item w3-button w3-border" onclick="openTab('Home', 'Fade')">
+                        <label class="detail">แก้ไขภาพเคลื่อนไหวหน้าแรก</label>
                     </a>
                 </div>
             </div>

@@ -52,45 +52,6 @@
             <?php } if($_GET['status'] == 'view') {}?>
             <div class="col-12">&nbsp;</div>
             <div class="col-10 offset-1">
-                <label class="header">รายการภาพเคลื่อนไหวในหน้าหลัก</label>
-                <?php
-                    $sqlBanner = 'SELECT * FROM NEWS_BANNER';
-                    $queryBanner = mysqli_query($conn,$sqlBanner);
-                    $numBanner_rows = mysqli_num_rows($queryBanner);
-                ?>
-                <div class="w3-card-4 w3-light-gray" style="padding-top:1%; padding-bottom:1%">
-                    <div class="container">
-                        <div class="col-12">&nbsp;</div>
-                        <label class="mini-header text-danger">Website DIS สามารถแสดงภาพเคลื่อนไหวในหน้าแรกได้แค่ <strong>3</strong> ภาพเท่านั้น</label>
-                        <?php if($numBanner_rows == 3) {?>
-                            <div class="text-center">
-                                <button class="w3-button w3-block w3-green w3-section w3-padding" type="button" onclick="document.getElementById('errorAddBanner').style.display='block'">
-                                    <i class="fa fa-cloud-upload icon-detail"></i>&nbsp;&nbsp;เพิ่มภาพเคลื่อนไหว
-                                </button>
-                            </div>
-                            <div id="errorAddBanner" class="w3-modal">
-                                <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
-                                    <div class="w3-center"><br>
-                                        <span onclick="document.getElementById('errorAddBanner').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
-                                        <label class="header"><font size="+3">คำเตือน</font></label><br>
-                                        <label class="detail text-danger">ไม่สามารถเพิ่มภาพเคลื่อนไหวได้ เนื่องจากเกินจำนวนที่กำหนดไว้<br> 
-                                        คุณต้องลบภาพเดิมออกก่อน ถึงจะสามารถเพิ่มใหม่ได้อีกครั้ง</label>
-                                    </div>
-                                    <button class="w3-button w3-block w3-green w3-section w3-padding" type="button" onclick="document.getElementById('errorAddBanner').style.display='none'"><i class="fa fa-check icon-detail"></i>&nbsp;&nbsp;
-                                    เข้าใจแล้ว</button>
-                                </div>
-                            </div>
-                        <?php } else { ?>
-                            <div class="text-center">
-                                <a href="#"><button class="w3-button w3-block w3-green w3-section w3-padding" type="button">
-                                    <i class="fa fa-cloud-upload icon-detail"></i>&nbsp;&nbsp;เพิ่มภาพเคลื่อนไหว
-                                </button></a>
-                            </div>
-                        <?php } ?>
-                    </div>
-                </div>
-                <div class="col-12">&nbsp;</div>
-
                 <label class="header">รายการข่าวประชาสัมพันธ์ที่แสดงในหน้าหลัก</label>
                 <?php
                     $sqlIndex = 'SELECT * FROM NEWS WHERE news_type LIKE 2';
@@ -208,7 +169,11 @@
                                 <?php while($result=mysqli_fetch_array($query,MYSQLI_ASSOC)) { ?>
                                 <tr class="w3-centered">
                                     <td class="text-center"><label class="detail"><font size="+0.5"><?php echo $result['id']; ?></font></label></td>
-                                    <td class="text-center"><label class="detail"><font size="+0.5"><?php echo $result['news_title']; ?></font></label></td>
+                                    <td class="text-center"><label class="detail"><font size="+0.5">
+                                        <?php if($result["news_type"] == 1) { echo('<span class="w3-tag w3-green w3-small">กำลังแสดง</span>'); }?>
+                                        <?php if($result["news_type"] == 3) { echo('<span class="w3-tag w3-red w3-small">ไม่แสดง</span>'); }?>
+                                        <?php echo $result['news_title']; ?></font></label>
+                                    </td>
                                     <td class="text-center"><label class="detail"><font size="+0.5"><?php echo $result['news_date'];?></font></label></td>
                                     <td class="text-center">
                                         <?php if($numIndex_rows == 5) {?>
