@@ -15,12 +15,16 @@
     $YearLost = substr($dateLost,6,4);
     $newDateLost = $YearLost."-".$MonthLost."-".$DayLost;
 
+    echo($dateLost);
+    echo('<br>');
+    echo($newDateLost);
+
     // Connect DB.
     include 'connectDB.php';
 
     // Update LOST_AND_FOUND_B table.
     $query = 'UPDATE LOST_AND_FOUND_B SET item_name_lost="'.$itemName.'", item_detail_lost="'.$itemDetailInput.'" , item_location_lost="'.$locationItemInput.'", item_status="'.$itemStatus.'"';
-    $query .= ', name_lost_item="'.$nameLostInput.'", phonenumber_lost_item ="'.$phoneLostInput.'", date_lost ="'.$newDateLost.'" WHERE id="'.$id.'"'; 
+    $query .= ', name_lost_item="'.$nameLostInput.'", phonenumber_lost_item="'.$phoneLostInput.'", date_lost="'.$newDateLost.'" WHERE id="'.$id.'"'; 
     $objQuery = mysqli_query($conn,$query);
 
     mysqli_close($conn);

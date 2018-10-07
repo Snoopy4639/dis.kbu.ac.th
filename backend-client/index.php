@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <?php
 	session_start();
+	if($_SESSION["permission"] == 5 || $_SESSION["permission"] == 3) {
+		header("location: /dis/backend-client/setPassword.php?status=1");
+	}
 
 	include 'src/backend/connectDB.php';
 	$sql = 'SELECT * FROM DIS_USER INNER JOIN DIS_USER_INFO ON DIS_USER.id = DIS_USER_INFO.id WHERE DIS_USER.username="'.$_SESSION["username"].'"';
@@ -33,17 +36,23 @@
             <div class="col-12">&nbsp;</div>
             <div class="col-10 offset-1">
 				<?php while($result=mysqli_fetch_array($query,MYSQLI_ASSOC)) { ?>
-                <div class="w3-card-4 w3-light-gray">
-                    <div class="col-12 text-center" style="padding-top: 2%">
-                        <label class="header">ยินดีต้อนรับ</label>
-                    </div>
-                    <div class="col-4 offset-4">
-						<img src="<?php echo('src/backend/upload/'.$result["profile_pic"])?>" class="img-fluid w3-border">
-                    </div>
-                    <div class="col-12">&nbsp;</div>
-                    <label class="header">อาจารย์<?php echo($result["first_name"]." ". $result["last_name"])?></label>
-                    <div class="col-12">&nbsp;</div>
-                </div>
+					<div class="w3-card-4 w3-light-gray">
+						<?php
+							if($_SESSION["permission"] == 4) {
+								echo('<div class="col-12">&nbsp;</div>');
+								echo('<label class="header text-danger">Username นี้ถูกระงับการใช้งานชั่วคราว กรุณาติดต่อ Admin !</label>');
+							}
+						?>
+						<div class="col-12 text-center" style="padding-top: 2%">
+							<label class="header">ยินดีต้อนรับ</label>
+						</div>
+						<div class="col-4 offset-4">
+							<img src="<?php echo('src/backend/upload/'.$result["profile_pic"])?>" class="img-fluid w3-border">
+						</div>
+						<div class="col-12">&nbsp;</div>
+						<label class="header">อาจารย์<?php echo($result["first_name"]." ". $result["last_name"])?></label>
+						<div class="col-12">&nbsp;</div>
+					</div>
 				<?php } ?>
             </div>
         </div>

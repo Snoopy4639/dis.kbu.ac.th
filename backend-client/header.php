@@ -49,8 +49,8 @@
                                     <p class="detail">ออกจากระบบ</p>
                                 </button>
                                 <?php if($_SESSION["permission"] != 3) {?>
-                                    <a href="#" class="w3-bar-item w3-button w3-right bar-button" style="padding-top:1%"><p class="detail">เปลี่ยนรหัสผ่าน</p></a>
-                                    <a href="#" class="w3-bar-item w3-button w3-right bar-button" style="padding-top:1%"><p class="detail">ข้อมูลส่วนตัว</p></a>
+                                    <a href="<?php echo('changePassword.php?id='.$result['id'].'&status=1');?>" class="w3-bar-item w3-button w3-right bar-button" style="padding-top:1%"><p class="detail">เปลี่ยนรหัสผ่าน</p></a>
+                                    <a href="<?php echo('myProfile.php?id='.$result['id'].'&status=1');?>" class="w3-bar-item w3-button w3-right bar-button" style="padding-top:1%"><p class="detail">ข้อมูลส่วนตัว</p></a>
                                 <?php } ?>
                             </div>
                         </div>

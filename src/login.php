@@ -38,6 +38,9 @@
             // Block Mode !
             header("location: /dis/backend-client/index.php");
         }
+        elseif($_SESSION["permission"] == 5) {
+            header("location: /dis/backend-client/setPassword.php?status=1");
+        }
     } else {
         // If Login Fail !
 

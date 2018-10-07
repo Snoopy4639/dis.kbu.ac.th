@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <?php
     session_start(); 
-    // if (!$_SESSION['permission'] == 0 or !$_SESSION['permission'] == 1) {
-    //     header("location: /backend-client/index.php");
-    // } else {
+    if($_SESSION["permission"] == 2 || $_SESSION["permission"] == 3 || $_SESSION["permission"] == 4 || $_SESSION["permission"] == 5) {
+        header("location: /dis/backend-client/index.php");
+    }
 ?>
 <html>
 <head>
@@ -75,10 +75,11 @@
                                     <td class="text-center"><label class="detail"><font size="+0.5">
                                         <?php
                                             if($result['group_status'] == 0) { echo 'God Mode';}
-                                            if($result['group_status'] == 1) { echo 'Admin';}
-                                            if($result['group_status'] == 2) { echo 'Staff';}
-                                            if($result['group_status'] == 3) { echo 'First Login';}
-                                            if($result['group_status'] == 4) { echo 'Block';}
+                                            elseif($result['group_status'] == 1) { echo 'Admin';}
+                                            elseif($result['group_status'] == 2) { echo 'Staff';}
+                                            elseif($result['group_status'] == 3) { echo 'First Login';}
+                                            elseif($result['group_status'] == 4) { echo 'Block';}
+                                            elseif($result['group_status'] == 5) { echo 'Reset Password';}
                                         ?>
                                         </font></label>
                                     </td>

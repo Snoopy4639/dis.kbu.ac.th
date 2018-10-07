@@ -3,6 +3,10 @@
 <head>
     <?php
         session_start(); 
+        if($_SESSION["permission"] == 3 || $_SESSION["permission"] == 4 || $_SESSION["permission"] == 5) {
+            header("location: /dis/backend-client/index.php");
+        }
+
         $id = $_REQUEST["ID"];
         $status = $_REQUEST["Status"];
 
@@ -114,11 +118,11 @@
                                     <button class="w3-button w3-green" type="submit">
                                         <i class="fa fa-check icon-detail"></i>&nbsp;&nbsp;แก้ไข
                                     </button>
-                                    <a href="listLostAndFound_A.php?status=view/"><button class="w3-button w3-gray" type="button">
+                                    <a href="listLostAndFound_B.php?status=view/"><button class="w3-button w3-gray" type="button">
                                        <i class="fa fa-close icon-detail"></i>&nbsp;&nbsp;ยกเลิก
                                     </button></a>
                                     <?php } if($status == 2) {?>
-                                        <a href="listLostAndFound_A.php?status=view/"><button class="w3-button w3-green" type="button">
+                                        <a href="listLostAndFound_B.php?status=view/"><button class="w3-button w3-green" type="button">
                                             <i class="fa fa-chevron-left"></i>&nbsp;&nbsp;ย้อนกลับ
                                         </button></a>
                                     <?php } ?>

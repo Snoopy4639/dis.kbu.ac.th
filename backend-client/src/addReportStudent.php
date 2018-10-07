@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <?php
     session_start(); 
+    if($_SESSION["permission"] == 3 || $_SESSION["permission"] == 4 || $_SESSION["permission"] == 5) {
+        header("location: /dis/backend-client/index.php");
+    }
+
     $id = $_GET["id"];
-    // $id = 1;
 
     include 'backend/connectDB.php';
     $sql = 'SELECT * FROM STUDENT_INFO WHERE id="'.$id.'"';

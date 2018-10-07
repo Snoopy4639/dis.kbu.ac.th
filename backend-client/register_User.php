@@ -1,4 +1,11 @@
 <!DOCTYPE html>
+<?php
+    session_start();
+    
+	if($_SESSION["permission"] == 2 || $_SESSION["permission"] == 3 || $_SESSION["permission"] == 4 || $_SESSION["permission"] == 5) {
+        header("location: /dis/backend-client/index.php");
+    }
+?>
 <html>
 <head>
 	<meta charset="utf-8" content="width=device-width, initial-scale=1" name="viewport">

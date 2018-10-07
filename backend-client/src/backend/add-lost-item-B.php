@@ -38,8 +38,8 @@
 
     if (!$objQuery){
         $save = 'error';
-        header("location: /dis/backend-client/addLostAndFound_A.php?status=".$save);
+        header("location: /dis/backend-client/addLostAndFound_B.php?status=".$save);
     } else {
-        header("location: /dis/backend-client/listStudent.php?status=view");
+        header("location: /dis/backend-client/listLostAndFound_B.php?status=view");
     }
 ?>

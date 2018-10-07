@@ -6,6 +6,7 @@ function preview_image(event)
     if(parseInt(extall.indexOf(ext)) < 0)
     {
         document.getElementById("Error_Message_Image").style.display = "block";
+        document.getElementById("profile_image_upload").value = "";
         return false
     }
     document.getElementById("Error_Message_Image").style.display = "none";
