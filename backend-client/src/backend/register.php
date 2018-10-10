@@ -50,9 +50,9 @@
 
     if (!$objQuery1 or !$objQuery2){
         $save = 'error';
-        header("location: /backend-client/register_User.php?status=".$save);
+        header("location: ../../register_User.php?status=".$save);
     } else {
-        header("location: /backend-client/listUser.php?status=view");
+        header("location: ../../listUser.php?status=view");
     }
     
 
