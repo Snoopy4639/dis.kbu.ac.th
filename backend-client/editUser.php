@@ -129,6 +129,11 @@
                                                                 case 5:
                                                                 ?>
                                                                     <option value="5" selected>รอเปลี่ยนรหัสผ่าน</option>
+                                                                <?php 
+                                                                break;
+                                                                case 6:
+                                                                ?>
+                                                                    <option value="6" selected>รอยืนยันเปลี่ยนรหัสผ่าน</option>
                                                             <?php } ?>
                                                         </select>
                                                     </div>
