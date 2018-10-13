@@ -106,7 +106,38 @@
                         <div class="col-12">&nbsp;</div>
                         <?php
                             include 'src/backend/connectDB.php';
+
                             $sql = 'SELECT * FROM STUDENT_INFO';
+                            $query = mysqli_query($conn,$sql);
+                            $num_rows = mysqli_num_rows($query);
+
+                            $per_page = 10;
+                            $page  = 1;
+
+                            if(isset($_GET["Page"])) {
+                                $page = $_GET["Page"];
+                            }
+
+                            $prev_page = $page-1;
+                            $next_page = $page+1;
+
+                            $row_start = (($per_page*$page)-$per_page);
+                            if($num_rows<=$per_page) {
+                                $num_pages =1;
+                            }
+                            else if(($num_rows % $per_page)==0) {
+                                $num_pages =($num_rows/$per_page) ;
+                            }
+                            else {
+                                $num_pages =($num_rows/$per_page)+1;
+                                $num_pages = (int)$num_pages;
+                            }
+                            $row_end = $per_page * $page;
+                            if($row_end > $num_rows) {
+                                $row_end = $num_rows;
+                            }
+                            
+                            $sql .=" order by id DESC LIMIT $row_start ,$row_end";
                             $query = mysqli_query($conn,$sql);
                         ?>
                         <div class="col-12">
@@ -169,6 +200,23 @@
                                 </tr>
                                 <?php } ?>
                             </table>
+                            <div class="col-12">&nbsp;</div>
+                            <div class="text-center">
+                                <?php if($prev_page) { ?>
+                                    <a href=<?php echo("$_SERVER[SCRIPT_NAME]?status=view&Page=$prev_page");?> class="w3-button">&laquo;&nbsp;ย้อนกลับ</a>
+                                <?php 
+                                }
+                                for($i=1; $i<=$num_pages; $i++) {
+                                    if($i != $page) { ?>
+                                    <a href=<?php echo("$_SERVER[SCRIPT_NAME]?status=view&Page=$i");?> class="w3-button"><?php echo($i);?></a>
+                                <?php } else { ?>
+                                    <a href=<?php echo("$_SERVER[SCRIPT_NAME]?status=view&Page=$i");?> class="w3-button w3-amber"><?php echo($i);?></a>
+                                <?php }
+                                }
+                                if($page!=$num_pages) { ?>
+                                    <a href=<?php echo("$_SERVER[SCRIPT_NAME]?status=view&Page=$next_page");?> class="w3-button">ถัดไป&nbsp;&raquo;</a>
+                                <?php } ?>
+                            </div>
                             <div class="col-12">&nbsp;</div>
                         </div>
                         <?php }

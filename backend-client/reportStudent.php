@@ -116,7 +116,12 @@
                                             <div class="w3-third">
                                                 <img src="src/image/student.jpg" class="img-fluid" style="width:200px">
                                                 <div class="col-12">&nbsp;</div>
-                                                <label>ข้อมูลนักศึกษาทั้งหมด : 500 คน</label>
+                                                <?php
+                                                    $sqlStudent = "SELECT * FROM STUDENT_INFO";
+                                                    $resultStudent = mysqli_query($conn, $sqlStudent);
+                                                    $numStudent = mysqli_num_rows($resultStudent);
+                                                ?>
+                                                <label>ข้อมูลนักศึกษาทั้งหมด : <?=$numStudent?> คน</label>
                                             </div>
                                             <div class="w3-third">
                                                 <img src="src/image/document.png" class="img-fluid" style="width:200px">
