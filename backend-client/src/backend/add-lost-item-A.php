@@ -46,7 +46,7 @@
     mysqli_close($conn);
 
     if (!$objQuery){
-        $save = 'error';
+        $save = 0;
         header("location: /dis/backend-client/addLostAndFound_A.php?status=".$save);
     } else {
         header("location: /dis/backend-client/listStudent.php?status=view");

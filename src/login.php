@@ -6,7 +6,7 @@
     $password = base64_encode($_REQUEST["passwordLoginInput"]);
 
     // Connect DB.
-    include('/backend-client/src/backend/connectDB.php');
+    include('../backend-client/src/backend/connectDB.php');
 
     // $query = "SELECT * FROM DIS_USER WHERE username LIKE '%".$username."%' AND password LIKE '%".$password."%'";
     $query = "SELECT * FROM DIS_USER WHERE username = '$username' AND password = '$password'";
@@ -38,7 +38,11 @@
             header("location: /dis/backend-client/index.php");
         }
         elseif($_SESSION["permission"] == 5) {
-            header("location: /dis/backend-client/setPassword.php?status=1");
+            echo("01");
+            // header("location: /dis/backend-client/setPassword.php?status=1");
+        }
+        elseif($_SESSION["permission"] == 6) {
+            header("location: /dis/index.php?Status=3");
         }
     } else {
         // If Login Fail !

@@ -121,7 +121,7 @@
 
                             $sqlChart = "SELECT SUM(total) AS total, DATE_FORMAT(date_record, '%M') AS month FROM SUM_REPORT_ITEM ";
                             $sqlChart .= "WHERE item_type LIKE $typeSearch AND DATE_FORMAT(date_record, '%Y') LIKE '$yearSearch' GROUP BY DATE_FORMAT(date_record, '%M%')";
-                            echo($sqlChart);
+                            // echo($sqlChart);
 
                             $resultchart = mysqli_query($conn, $sqlChart);
                             

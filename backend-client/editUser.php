@@ -171,7 +171,7 @@
                                         </div>
                                     </div>
                                     <div class="col-12">&nbsp;</div>
-                                    <?php if ($result['group_status'] == 5) {?>
+                                    <?php if ($result['group_status'] == 6) {?>
                                         <?php
                                             $firstTimePassword = rand(1111,9999);
                                         ?>

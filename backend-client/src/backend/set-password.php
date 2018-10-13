@@ -22,16 +22,16 @@
     } else {
         // Update Password DIS_USER table.
         $query = 'UPDATE DIS_USER SET password="'.$password.'", group_status="2" WHERE id="'.$id.'"';
-        $objQuery = mysqli_query($conn,$query);
+        $objQuery2 = mysqli_query($conn,$query);
 
         mysqli_close($conn);
 
         // header("location: /dis/backend-client/listUser.php?status=".$save);
-        if(!$objQuery) {
-            $save = false;
-            header("location: /dis/backend-client/setPassword.php?status=".$save);
+        if($objQuery2) {
+            header("location: ../../../index.php");
         } else {
-            header("location: ../../index.php");
+            $save = 0;
+            header("location: /dis/backend-client/setPassword.php?status=".$save);
         }
     }
 ?>

@@ -80,6 +80,7 @@
                                             elseif($result['group_status'] == 3) { echo 'First Login';}
                                             elseif($result['group_status'] == 4) { echo 'Block';}
                                             elseif($result['group_status'] == 5) { echo 'Reset Password';}
+                                            elseif($result['group_status'] == 6) { echo 'Wait Reset Password';}
                                         ?>
                                         </font></label>
                                     </td>

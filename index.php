@@ -59,6 +59,16 @@
                         </div>
                     </div>
                     <?php }?>
+                    <?php if($_GET["Status"] == 3) {?>
+                    <div id="alert-loginFail" class="col-12">
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <i class="fa fa-times-circle icon-detail"></i>&nbsp;&nbsp;&nbsp;คุณได้ทำการ Reset-Password กรุณาติดต่อ Admin
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                    <?php }?>
                 <?php } ?>
                 <div class="col-12">&nbsp;</div>
                 <div class="w3-card-4 w3-light-gray" style="padding:2% 2% 2% 2%">
