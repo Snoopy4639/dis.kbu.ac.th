@@ -42,19 +42,8 @@
                                     <label class="mini-header">ประเภทของหาย</label>
                                     <select class="form-control" name="typeSearch" required>
                                         <option value="" selected disabled>เลือก</option>
-                                        <option value="1">บริหารธุรกิจ</option>
-                                        <option value="2">นิติศาสตร์</option>
-                                        <option value="3">นิเทศศาสตร์</option>
-                                        <option value="4">วิศวกรรมศาสตร์</option>
-                                        <option value="5">สถาปัตยกรรมศาสตร์</option>
-                                        <option value="6">ศิลปกรรมศาสตร์</option>
-                                        <option value="7">วิทยาศาสตร์และเทคโนโลยี</option>
-                                        <option value="8">จิตวิทยา</option>
-                                        <option value="9">หลักสูตรนานาชาติ</option>
-                                        <option value="10">สถาบันพัฒนาบุคคลากรการบิน</option>
-                                        <option value="11">วิทยาศาสตร์การกีฬา</option>
-                                        <option value="12">พยาบาลศาสตร์</option>
-                                        <option value="13">อื่นๆ</option>
+                                        <option value="1">รายงานแจ้งของหาย</option>
+                                        <option value="2">รายงานพบของหาย</option>
                                     </select>
                                 </div>
                                 <div class="w3-half">
@@ -123,52 +112,29 @@
                             </div>
                         <?php } else if($_GET["view"] == "2") { ?>
                             <?php
-                            $facultySearch = $_REQUEST["facultySearch"];
-                            $facultyShow = "";
-                            if($facultySearch == 1) { $facultyShow = 'บริหารธุรกิจ';}
-                            else if($facultySearch == 2) { $facultyShow = 'นิติศาสตร์';}
-                            else if($facultySearch == 3) { $facultyShow = 'นิเทศศาสตร์';}
-                            else if($facultySearch == 4) { $facultyShow = 'วิศวกรรมศาสตร์';}
-                            else if($facultySearch == 5) { $facultyShow = 'สถาปัตยกรรมศาสตร์';}
-                            else if($facultySearch == 6) { $facultyShow = 'ศิลปกรรมศาสตร์';}
-                            else if($facultySearch == 7) { $facultyShow = 'วิทยาศาสตร์และเทคโนโลยี';}
-                            else if($facultySearch == 8) { $facultyShow = 'จิตวิทยา';}
-                            else if($facultySearch == 9) { $facultyShow = 'หลักสูตรนานาชาติ';}
-                            else if($facultySearch == 10) { $facultyShow = 'สถาบันพัฒนาบุคคลากรการบิน';}
-                            else if($facultySearch == 11) { $facultyShow = 'วิทยาศาสตร์การกีฬา';}
-                            else if($facultySearch == 12) { $facultyShow = 'พยาบาลศาสตร์';}
-                            else if($facultySearch == 13) { $facultyShow = 'อื่นๆ';}
-                            
                             $typeSearch = $_REQUEST["typeSearch"];
                             $typeShow = "";
-                            if($typeSearch == 1) { $typeShow = 'ทะเลาะวิวาท์';}
-                            else if($typeSearch == 2) { $typeShow = 'ลักทรัพย์';}
-                            else if($typeSearch == 3) { $typeShow = 'ยาเสพติด';}
-                            else if($typeSearch == 4) { $typeShow = 'ชู้สาว';}
-                            else if($typeSearch == 5) { $typeShow = 'การแต่งกาย';}
-                            else if($typeSearch == 6) { $typeShow = 'อื่นๆ';}
+                            if($typeSearch == 1) { $typeShow = 'รายงานแจ้งของหาย';}
+                            else if($typeSearch == 2) { $typeShow = 'รายงานพบของหาย';}
 
                             $yearSearch = $_REQUEST["yearSearch"];
 
-                            $sqlChart = "SELECT SUM(total) AS total, DATE_FORMAT(date_record, '%M') AS month, faculty_record AS faculty FROM SUM_REPORT_STUDENT ";
-                            $sqlChart .= "WHERE faculty_record LIKE $facultySearch AND behavior_type LIKE $typeSearch AND DATE_FORMAT(date_record, '%Y') LIKE '$yearSearch' GROUP BY DATE_FORMAT(date_record, '%M%')";
-                            // echo($sqlChart);
+                            $sqlChart = "SELECT SUM(total) AS total, DATE_FORMAT(date_record, '%M') AS month FROM SUM_REPORT_ITEM ";
+                            $sqlChart .= "WHERE item_type LIKE $typeSearch AND DATE_FORMAT(date_record, '%Y') LIKE '$yearSearch' GROUP BY DATE_FORMAT(date_record, '%M%')";
+                            echo($sqlChart);
 
                             $resultchart = mysqli_query($conn, $sqlChart);
                             
                             $month = array();
                             $total = array();
-                            $faculty = array();
                             
                             while($rs = mysqli_fetch_array($resultchart)) { 
                                 $month[] = "\"".$rs['month']."\""; 
                                 $total[] = "\"".$rs['total']."\"";
-                                $faculty[] = "\"".$rs['faculty']."\"";
                             }
 
                             $month = implode(",", $month); 
                             $total = implode(",", $total); 
-                            $faculty = implode(",", $faculty); 
                             ?>
                             <div class="col-12">
                                 <div class="w3-card-4 w3-amber">
@@ -179,17 +145,7 @@
                                                 <div class="w3-card-4 w3-white">
                                                     <div class="w3-padding-large">
                                                         <div class="text-center">
-                                                            <label class="mini-header">คณะที่ค้นหา</label><br>
-                                                            <label><?=$facultyShow?></label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="w3-card-4 w3-white">
-                                                    <div class="w3-padding-large">
-                                                        <div class="text-center">
-                                                            <label class="mini-header">ประเภทความผิดที่ค้นหา</label><br>
+                                                            <label class="mini-header">ประเภทที่ค้นหา</label><br>
                                                             <label><?=$typeShow?></label>
                                                         </div>
                                                     </div>
@@ -226,7 +182,7 @@
                                         data: {
                                             labels: [<?php echo ($month);?>],
                                             datasets: [{
-                                                label: 'รายงานความประพฤติของนักศึกษา (รายงาน)',
+                                                label: '<?php echo($typeShow);?> (รายงาน)',
                                                 data: [<?php echo $total;?>],
                                                 backgroundColor: [
                                                     'rgba(255, 99, 132, 0.2)',

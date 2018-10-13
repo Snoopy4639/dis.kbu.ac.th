@@ -38,6 +38,11 @@
     $query .= "'".$profileURL."','".$nameFoundInput."','".$phoneFoundInput."','".$userCreate."')";
     $objQuery = mysqli_query($conn,$query);
 
+    // Insert SUM_REPORT_ITEM table.
+    $querySum = "INSERT INTO SUM_REPORT_ITEM (date_record, item_type, total) ";
+    $querySum .= "VALUES ('".$newDate."', 1, 1 ) ";
+    $objQuerySum = mysqli_query($conn,$querySum);
+
     mysqli_close($conn);
 
     if (!$objQuery){

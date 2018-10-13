@@ -31,7 +31,7 @@
             $save = false;
             header("location: /dis/backend-client/setPassword.php?status=".$save);
         } else {
-            header("location: /dis/backend-client/index.php");
+            header("location: ../../index.php");
         }
     }
 ?>
