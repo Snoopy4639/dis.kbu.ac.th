@@ -124,9 +124,14 @@
                                                 <label>ข้อมูลนักศึกษาทั้งหมด : <?=$numStudent?> คน</label>
                                             </div>
                                             <div class="w3-third">
+                                                <?php
+                                                    $sqlReport = "SELECT * FROM STUDENT_BEHAVIOR_INFO";
+                                                    $resultReport = mysqli_query($conn, $sqlReport);
+                                                    $numReport = mysqli_num_rows($resultReport);
+                                                ?>
                                                 <img src="src/image/document.png" class="img-fluid" style="width:200px">
                                                 <div class="col-12">&nbsp;</div>
-                                                <label>ข้อมูลรายงานพฤติกรรมทั้งหมด : 500 รายงาน</label>
+                                                <label>ข้อมูลรายงานพฤติกรรมทั้งหมด : <?=$numReport?> รายงาน</label>
                                             </div>
                                             <!-- <div class="w3-third">
                                                 <img src="src/image/student.jpg" class="img-fluid" style="width:200px">

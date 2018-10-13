@@ -8,6 +8,7 @@
     // Connect DB.
     include('../backend-client/src/backend/connectDB.php');
 
+
     // $query = "SELECT * FROM DIS_USER WHERE username LIKE '%".$username."%' AND password LIKE '%".$password."%'";
     $query = "SELECT * FROM DIS_USER WHERE username = '$username' AND password = '$password'";
     $checkStatus = mysqli_query($conn, $query);

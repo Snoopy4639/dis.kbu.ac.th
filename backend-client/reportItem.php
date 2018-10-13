@@ -42,8 +42,8 @@
                                     <label class="mini-header">ประเภทของหาย</label>
                                     <select class="form-control" name="typeSearch" required>
                                         <option value="" selected disabled>เลือก</option>
-                                        <option value="1">รายงานแจ้งของหาย</option>
-                                        <option value="2">รายงานพบของหาย</option>
+                                        <option value="1">รายงานพบของหาย</option>
+                                        <option value="2">รายงานแจ้งของหาย</option>
                                     </select>
                                 </div>
                                 <div class="w3-half">
@@ -93,12 +93,22 @@
                                             <div class="w3-third">
                                                 <img src="src/image/student.jpg" class="img-fluid" style="width:200px">
                                                 <div class="col-12">&nbsp;</div>
-                                                <label>ข้อมูลนักศึกษาทั้งหมด : 500 คน</label>
+                                                <?php
+                                                    $sqlStudent = "SELECT * FROM STUDENT_INFO";
+                                                    $resultStudent = mysqli_query($conn, $sqlStudent);
+                                                    $numStudent = mysqli_num_rows($resultStudent);
+                                                ?>
+                                                <label>ข้อมูลนักศึกษาทั้งหมด : <?=$numStudent?> คน</label>
                                             </div>
                                             <div class="w3-third">
                                                 <img src="src/image/document.png" class="img-fluid" style="width:200px">
                                                 <div class="col-12">&nbsp;</div>
-                                                <label>ข้อมูลรายงานพฤติกรรมทั้งหมด : 500 รายงาน</label>
+                                                <?php
+                                                    $sqlItem = "SELECT * FROM SUM_REPORT_ITEM";
+                                                    $resultItem = mysqli_query($conn, $sqlItem);
+                                                    $numItem = mysqli_num_rows($resultItem);
+                                                ?>
+                                                <label>ข้อมูลรายงานของหายทั้งหมด : <?=$numItem?> รายงาน</label>
                                             </div>
                                             <!-- <div class="w3-third">
                                                 <img src="src/image/student.jpg" class="img-fluid" style="width:200px">
