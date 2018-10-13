@@ -64,6 +64,19 @@
                             </div>
                         </div>
                         <div class="col-12">&nbsp;<div>
+                        <div class="row">
+                            <div class="col-4">
+                                <img src="photo/index/staff/อช.png" class="img-fluid">
+                                <div class="col-12">&nbsp;</div>
+                                <label class="header">อาจารย์พงษ์ศิริ แหลมทอง</label><br><label class="mini-header">อาจารย์ประจำแผนกวินัยนักศึกษา</label>
+                            </div>
+                            <div class="col-4">
+                                <img src="photo/index/staff/อญ.png" class="img-fluid">
+                                <div class="col-12">&nbsp;</div>
+                                <label class="header">อาจารย์โสภา เอกทัศน์</label><br><label class="mini-header">อาจารย์ประจำแผนกวินัยนักศึกษา</label>
+                            </div>
+                        </div>
+                        <div class="col-12">&nbsp;<div>
                     </div>
                 </div>
                 <div class="col-12">&nbsp;</div>
