@@ -1,4 +1,7 @@
 <?php
+    session_start();
+    $createBy = $_SESSION["id_user"];
+
     // Data from register_student.html
     $studentID = trim($_REQUEST["studentIdInput"]);
     $facultyInput = $_REQUEST['facultyInput'];
@@ -42,15 +45,16 @@
 
     // Insert STUDENT_INFO table.
     $query = "INSERT INTO STUDENT_INFO (student_id, student_first_name, student_last_name, student_birthday, student_faculty, student_address, student_mobile_number";
-    $query .= ", student_score, student_pic) VALUES ('".$studentID."','".$firstNameInput."','".$lastNameInput."','".$newBirthday."','".$facultyInput."',";
-    $query .= "'".$addressInput."','".$phoneNumberInput."','".$score."','".$profileURL."')";
+    $query .= ", student_score, student_pic, created_by) VALUES ('".$studentID."','".$firstNameInput."','".$lastNameInput."','".$newBirthday."','".$facultyInput."',";
+    $query .= "'".$addressInput."','".$phoneNumberInput."','".$score."','".$profileURL."','".$createBy."')";
     $objQuery = mysqli_query($conn,$query);
 
     mysqli_close($conn);
 
     if (!$objQuery){
         $save = 'error';
-        header("location: /dis/backend-client/register_student.php?status=".$save);
+        echo($query);
+        // header("location: /dis/backend-client/register_student.php?status=".$save);
     } else {
         header("location: /dis/backend-client/listStudent.php?status=view");
     }

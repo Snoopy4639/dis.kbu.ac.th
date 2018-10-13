@@ -11,7 +11,7 @@
         $status = $_REQUEST["Status"];
 
         include 'src/backend/connectDB.php';
-        $sql = 'SELECT * FROM STUDENT_INFO WHERE id="'.$id.'"';
+        $sql = 'SELECT * FROM STUDENT_INFO AS a1 INNER JOIN DIS_USER_INFO AS a2 ON (a1.created_by = a2.id) WHERE a1.id="'.$id.'"';
         $query = mysqli_query($conn,$sql);
 
     ?>
@@ -86,7 +86,7 @@
                                         </tr>
                                         <tr>
                                             <td width="40%" class="w3-amber text-center"><label class="detail">ผู้บันทึกข้อมูล<td>
-                                            <td><label class="detail">ทวีพร</label></td>
+                                            <td><label class="detail"><?php echo($result["first_name"]);?></label></td>
                                         </tr>
                                     </table>
                                 </div>

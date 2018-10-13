@@ -6,8 +6,8 @@
     $password = base64_encode($_REQUEST["passwordLoginInput"]);
 
     // Connect DB.
-    // $conn = mysqli_connect('localhost', 'root', 'password', 'dis') or die ('Error'.mysqli_connect_error());
-    $conn = mysqli_connect('localhost', 'root', '', 'dis') or die ('Error'.mysqli_connect_error());
+    $conn = mysqli_connect('localhost', 'root', 'password', 'dis') or die ('Error'.mysqli_connect_error());
+    // $conn = mysqli_connect('localhost', 'root', '', 'dis') or die ('Error'.mysqli_connect_error());
     mysqli_set_charset($conn,"utf8");
 
     // $query = "SELECT * FROM DIS_USER WHERE username LIKE '%".$username."%' AND password LIKE '%".$password."%'";
@@ -16,6 +16,7 @@
 
     if(mysqli_num_rows($checkStatus)==1) {
         $row = mysqli_fetch_array($checkStatus);
+        $_SESSION["id_user" ] = $row["id"];
         $_SESSION["username"] = $row["username"];
         $_SESSION["permission"] = $row["group_status"];
         if($_SESSION["permission"] == 0) {

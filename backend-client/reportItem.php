@@ -33,14 +33,14 @@
         <div class="col-12">
             <div class="col-10 offset-1">
                 <div class="col-12">&nbsp;</div>
-                <label class="header">รายงานพฤติกรรมนักศึกษา</label>
+                <label class="header">รายงานของหาย</label>
                 <div class="col-12">&nbsp;</div>
                 <div class="col-12">
-                    <form action="reportStudent.php" method ="GET"> 
+                    <form action="reportItem.php" method ="GET"> 
                             <div class="w3-row-padding">
-                                <div class="w3-third">
-                                    <label class="mini-header">คณะ</label>
-                                    <select class="form-control" name="facultySearch" required>
+                                <div class="w3-half">
+                                    <label class="mini-header">ประเภทของหาย</label>
+                                    <select class="form-control" name="typeSearch" required>
                                         <option value="" selected disabled>เลือก</option>
                                         <option value="1">บริหารธุรกิจ</option>
                                         <option value="2">นิติศาสตร์</option>
@@ -57,19 +57,7 @@
                                         <option value="13">อื่นๆ</option>
                                     </select>
                                 </div>
-                                <div class="w3-third">
-                                    <label class="mini-header">ประเภทความผิด</label>
-                                    <select class="form-control" name="typeSearch" required>
-                                        <option value="" selected disabled>เลือก</option>
-                                        <option value="1">ทะเลาะวิวาท</option>
-                                        <option value="2">ลักทรัพย์</option>
-                                        <option value="3">ยาเสพติด</option>
-                                        <option value="4">ชู้สาว</option>
-                                        <option value="5">การแต่งกาย</option>
-                                        <option value="6">อื่นๆ</option>
-                                    </select>
-                                </div>
-                                <div class="w3-third">
+                                <div class="w3-half">
                                     <?php
                                         $sqlYear = "SELECT DATE_FORMAT(date_record, '%Y') AS Year FROM STUDENT_BEHAVIOR_INFO ORDER BY Year";
                                         $resultYear = mysqli_query($conn, $sqlYear);

@@ -93,6 +93,7 @@
                             <div class="col-12">&nbsp;</div>
                             <div class="text-center">
                                 <input type="hidden" name="id" value="<?=$id?>">
+                                <input type="hidden" name="faculty_record" value="<?=$result["student_faculty"]?>">
                                 <input type="hidden" name="studentID" value="<?=$result["student_id"]?>">
                                 <button class="w3-button w3-green" type="button" onclick="document.getElementById('confirmSaveReport').style.display='block'">
                                     <i class="fa fa-check icon-detail"></i>&nbsp;&nbsp;บันทึกข้อมูลพฤติกรรม

@@ -98,7 +98,7 @@
                                                 </div>
                                                 <div class="w3-row-padding">
                                                     <label class="detail">&nbsp;&nbsp;<i class="fa fa-pencil icon-detail"></i>&nbsp;&nbsp;รายละเอียดพฤติกรรม</label>
-                                                    <textarea class="w3-input w3-border w3-white" rows="5" col="5" resize="none" disabled><?php echo($result["datail_record"])?></textarea>
+                                                    <textarea class="w3-input w3-border w3-white" rows="5" col="5" resize="none" disabled><?php echo($result["detail_record"])?></textarea>
                                                 </div>
                                                 <div class="col-12">&nbsp;</div>
                                                 <div class="w3-row-padding">

@@ -9,6 +9,7 @@
     $oldScore = $_REQUEST["oldScore"];
     $removeScoreInput = trim($_REQUEST["removeScoreInput"]);
     $nameRecordInput = $_REQUEST["nameRecordInput"];
+    $faculty_record = $_REQUEST["faculty_record"];
 
     // Replace date format !
     $Day = substr($dateReport,8,2);
@@ -26,21 +27,31 @@
     $nameRecordInput = $result["id"];
 
     // Insert STUDENT_BEHAVIOR_INFO  table.
-    $query = "INSERT INTO STUDENT_BEHAVIOR_INFO (student_id, user_record, behavior_type, date_record, location_record, datail_record, remove_score_record) ";
+    $query = "INSERT INTO STUDENT_BEHAVIOR_INFO (student_id, user_record, behavior_type, date_record, location_record, detail_record, remove_score_record, faculty_record) ";
     $query .= "VALUES ('".$studentID."','".$nameRecordInput."','".$typeBehaviorInput."','".$newDate."','".$locationInput."',";
-    $query .= "'".$behaviorDetailInput."','".$removeScoreInput."')";
+    $query .= "'".$behaviorDetailInput."','".$removeScoreInput."','".$faculty_record."')";
     $objQueryInsert = mysqli_query($conn,$query);
 
-    //  Update student score in STUDENT_INFO table !
-    $totalScore = $oldScore - $removeScoreInput;
-    $updateScore = 'UPDATE STUDENT_INFO SET student_score="'.$totalScore.'" WHERE id="'.$id.'" ';
-    $objQueryUpdate = mysqli_query($conn,$updateScore);
+    if($objQueryInsert) {
+        // Insert SUM_REPORT_STUDENT table.
+        $querySum = "INSERT INTO SUM_REPORT_STUDENT (date_record, behavior_type, total, faculty_record) VALUES ";
+        $querySum .= "('".$newDate."','".$typeBehaviorInput."', 1, '".$faculty_record."') ";
+        $objQueryInsertSum = mysqli_query($conn,$querySum);
 
+        if($objQueryInsertSum) {
+            //  Update student score in STUDENT_INFO table !
+            $totalScore = $oldScore - $removeScoreInput;
+            $updateScore = 'UPDATE STUDENT_INFO SET student_score="'.$totalScore.'" WHERE id="'.$id.'" ';
+            $objQueryUpdate = mysqli_query($conn,$updateScore);
+        }
+    }
+    
     mysqli_close($conn);
 
     if ((!$objQueryInsert) || (!$objQueryUpdate)){
         $save = 'false';
-        header("location: /dis/backend-client/listStudent.php?status=".$save);
+        echo($query);
+        // header("location: /dis/backend-client/listStudent.php?status=".$save);
     } else {
         header("location: /dis/backend-client/listStudent.php?status=view");
     }

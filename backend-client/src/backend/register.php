@@ -2,6 +2,7 @@
     // Data from register.html
     $userNameInput = trim($_REQUEST["usernameInput"]);
     $passwordInput = $_REQUEST['passwordFirstTime'];
+    $passwordInput = base64_encode($passwordInput);
     $firstNameInput = trim($_REQUEST["nameInput"]);
     $lastNameInput = trim($_REQUEST["lastNameInput"]);
     $emailInput = trim($_REQUEST["emailInput"]);
@@ -29,7 +30,7 @@
     include 'connectDB.php';
 
     // Check exist username.
-    $sql = 'SELECT * FROM dis_user WHERE username = "'.$userNameInput.'"';
+    $sql = 'SELECT * FROM DIS_USER WHERE username = "'.$userNameInput.'"';
     $query = mysqli_query($conn,$sql);
     while($result=mysqli_fetch_array($query,MYSQLI_ASSOC)) {
         if($result['username'] == $userNameInput) {
@@ -39,18 +40,21 @@
     }
 
     // Insert DIS_USER table.
-    $query1 = "INSERT INTO dis_user (username, password, group_status) VALUES ('".$userNameInput."','".$passwordInput."','".$group_status."')";
+    $query1 = "INSERT INTO DIS_USER (username, password, group_status) VALUES ('".$userNameInput."','".$passwordInput."','".$group_status."')";
     $objQuery1 = mysqli_query($conn,$query1);
 
     // Insert DIS_USER_INFO table.
-    $query2 = "INSERT INTO dis_user_info (first_name, last_name, email, phone_number, profile_pic) VALUES ('".$firstNameInput."','".$lastNameInput."','".$emailInput."','".$phoneNumberInput."','".$profileURL."')";
+    $query2 = "INSERT INTO DIS_USER_INFO (first_name, last_name, email, phone_number, profile_pic) VALUES ('".$firstNameInput."','".$lastNameInput."','".$emailInput."','".$phoneNumberInput."','".$profileURL."')";
     $objQuery2 = mysqli_query($conn,$query2);
 
     mysqli_close($conn);
 
     if (!$objQuery1 or !$objQuery2){
         $save = 'error';
-        header("location: ../../register_User.php?status=".$save);
+        echo($query1);
+        echo("<br>");
+        echo($query2);
+        // header("location: ../../register_User.php?status=".$save);
     } else {
         header("location: ../../listUser.php?status=view");
     }

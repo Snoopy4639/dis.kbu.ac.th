@@ -55,7 +55,7 @@
                     <a href="reportStudent.php?view=1" class="w3-bar-item w3-button w3-border" onclick="openTab('Home', 'Fade')">
                         <label class="detail">รายงานนักศึกษา</label>
                     </a>
-                    <a href="#" class="w3-bar-item w3-button w3-border" onclick="openTab('Home', 'Fade')">
+                    <a href="reportItem.php?view=1" class="w3-bar-item w3-button w3-border" onclick="openTab('Home', 'Fade')">
                         <label class="detail">รายงานของหาย</label>
                     </a>
                 </div>
