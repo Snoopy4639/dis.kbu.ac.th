@@ -87,7 +87,7 @@
                             <div class="text-center">
                                 <label class="header">กรุณาค้นหาข้อมูลหรือกดปุ่มด้านล่างเพื่อแสดงทั้งหมด</label>
                                 <div class="col-12">&nbsp;</div>
-                                <a href="listStudent.php?status=showall"><button class="w3-button w3-green"><i class="fa fa-search"></i>&nbsp;&nbsp;แสดงข้อมูลทั้งหมด</button></a>
+                                <a href="listStudent.php?status=showall&Page=1"><button class="w3-button w3-green"><i class="fa fa-search"></i>&nbsp;&nbsp;แสดงข้อมูลทั้งหมด</button></a>
                                 <div class="col-12">&nbsp;</div>
                             </div>
                         <?php } ?>
@@ -203,18 +203,18 @@
                             <div class="col-12">&nbsp;</div>
                             <div class="text-center">
                                 <?php if($prev_page) { ?>
-                                    <a href=<?php echo("$_SERVER[SCRIPT_NAME]?status=view&Page=$prev_page");?> class="w3-button">&laquo;&nbsp;ย้อนกลับ</a>
+                                    <a href=<?php echo("$_SERVER[SCRIPT_NAME]?status=showall&Page=$prev_page");?> class="w3-button">&laquo;&nbsp;ย้อนกลับ</a>
                                 <?php 
                                 }
                                 for($i=1; $i<=$num_pages; $i++) {
                                     if($i != $page) { ?>
-                                    <a href=<?php echo("$_SERVER[SCRIPT_NAME]?status=view&Page=$i");?> class="w3-button"><?php echo($i);?></a>
+                                    <a href=<?php echo("$_SERVER[SCRIPT_NAME]?status=showall&Page=$i");?> class="w3-button"><?php echo($i);?></a>
                                 <?php } else { ?>
-                                    <a href=<?php echo("$_SERVER[SCRIPT_NAME]?status=view&Page=$i");?> class="w3-button w3-amber"><?php echo($i);?></a>
+                                    <a href=<?php echo("$_SERVER[SCRIPT_NAME]?status=showall&Page=$i");?> class="w3-button w3-amber"><?php echo($i);?></a>
                                 <?php }
                                 }
                                 if($page!=$num_pages) { ?>
-                                    <a href=<?php echo("$_SERVER[SCRIPT_NAME]?status=view&Page=$next_page");?> class="w3-button">ถัดไป&nbsp;&raquo;</a>
+                                    <a href=<?php echo("$_SERVER[SCRIPT_NAME]?status=showall&Page=$next_page");?> class="w3-button">ถัดไป&nbsp;&raquo;</a>
                                 <?php } ?>
                             </div>
                             <div class="col-12">&nbsp;</div>
