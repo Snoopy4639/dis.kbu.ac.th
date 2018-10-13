@@ -39,7 +39,7 @@
     while($result=mysqli_fetch_array($query,MYSQLI_ASSOC)) {
         if($result['student_id'] == $studentID) {
             $save = 'exist';
-            return header("location: /backend-client/register_student.php?status=".$save);
+            return header("location: ../../register_student.php?status=".$save);
         }
     }
 
@@ -53,10 +53,9 @@
 
     if (!$objQuery){
         $save = 'error';
-        echo($query);
-        // header("location: /dis/backend-client/register_student.php?status=".$save);
+        header("location: ../../register_student.php?status=".$save);
     } else {
-        header("location: /dis/backend-client/listStudent.php?status=view");
+        header("location: ../../listStudent.php?status=view");
     }
     
 
