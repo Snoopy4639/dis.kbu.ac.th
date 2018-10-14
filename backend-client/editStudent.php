@@ -50,7 +50,7 @@
                 <?php if($status == 3) { ?>
                     <div class="col-12">
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <i class="fa fa-times-circle icon-detail"></i>&nbsp;&nbsp;&nbsp;ไม่สามารถเพิ่มคะแนนนักศึกษาได้เกิน 100 คะแนน !
+                            <i class="fa fa-times-circle icon-detail"></i>&nbsp;&nbsp;&nbsp;ไม่สามารถเพิ่มคะแนนนักศึกษาได้เกิน 100 หรือลบคะแนนเกิน 100 คะแนนได้ !
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>

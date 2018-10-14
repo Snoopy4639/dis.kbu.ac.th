@@ -170,7 +170,7 @@
                                     <button class="w3-button w3-green" type="button" onclick="document.getElementById('confirmSave').style.display='block'">
                                         <i class="fa fa-check icon-detail"></i>&nbsp;&nbsp;เพิ่มข้อมูลนักศึกษา
                                     </button>
-                                    <a href="listUser.php?status=view/"><button class="w3-button w3-gray" type="button">
+                                    <a href="listStudent.php?status=view"><button class="w3-button w3-gray" type="button">
                                         <i class="fa fa-close icon-detail"></i>&nbsp;&nbsp;ยกเลิก
                                     </button></a>
                                 </div>
