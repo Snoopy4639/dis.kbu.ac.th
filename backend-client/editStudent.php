@@ -46,11 +46,23 @@
         <div class="col-12">
             <div class="col-10 offset-1">
                 <div class="col-12">&nbsp;</div>
+
+                <?php if($status == 3) { ?>
+                    <div class="col-12">
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <i class="fa fa-times-circle icon-detail"></i>&nbsp;&nbsp;&nbsp;ไม่สามารถเพิ่มคะแนนนักศึกษาได้เกิน 100 คะแนน !
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                <?php } ?>
+
                 <div class="col-12">&nbsp;</div>
                 <?php while($result=mysqli_fetch_array($query,MYSQLI_ASSOC)) { ?>
                 <label class="header"><?php echo($result['student_first_name']." ".$result['student_last_name']);?></label>
                 <label class="w3-right header text-danger">
-                <?php if($status == 1) { echo('แก้ไขข้อมูล'); }
+                <?php if($status == 1 || $status == 3) { echo('แก้ไขข้อมูล'); }
                     else if($status == 2) { echo('ดูข้อมูล'); }?>    
                 </label>
                     <div class="w3-card-4 w3-light-gray">
@@ -86,7 +98,9 @@
                                         </tr>
                                         <tr>
                                             <td width="40%" class="w3-amber text-center"><label class="detail">ผู้บันทึกข้อมูล<td>
-                                            <td><label class="detail"><?php echo($result["first_name"]);?></label></td>
+                                            <td>
+                                                <label class="detail"><?php echo($result["first_name"]);?></label>
+                                            </td>
                                         </tr>
                                     </table>
                                 </div>
@@ -371,13 +385,16 @@
                                 </div>
                                 <div class="col-12">&nbsp;</div>
                                 <div class="col-12 text-center">
-                                <?php if($status == 1) {?>
+                                <?php if($status == 1 || $status == 3) {?>
                                         <input type="hidden" value="<?=$id?>" name="idInput">
                                         <button class="w3-button w3-green" type="submit">
                                             <i class="fa fa-check icon-detail"></i>&nbsp;&nbsp;แก้ไขข้อมูลนักศึกษา
                                         </button>
                                         <button class="w3-button w3-blue" type="button" onclick="openTab('addStudentReport')">
-                                            <i class="fa fa-pencil-square-o icon-detail"></i>&nbsp;&nbsp;เพิ่มข้อมูลประวัติ
+                                            <i class="fa fa-pencil-square-o icon-detail"></i>&nbsp;&nbsp;เพิ่มข้อมูลประวัติ (กระทำความผิด)
+                                        </button>
+                                        <button class="w3-button w3-orange" type="button" onclick="openTab('addScoreStudent')">
+                                            <i class="fa fa-pencil-square-o icon-detail"></i>&nbsp;&nbsp;เพิ่มข้อมูลประวัติ (แก้ไขความผิด)
                                         </button>
                                         <a href="listStudent.php?status=view"><button class="w3-button w3-gray" type="button">
                                             <i class="fa fa-close icon-detail"></i>&nbsp;&nbsp;ยกเลิก
@@ -420,6 +437,9 @@
     </div>
     <div id="viewStudentReport" class="w3-container openTab" style="display:none">
         <div w3-include-html="<?php echo('src/viewReportStudent.php?id=').$studentID?>"></div>
+    </div>
+    <div id="addScoreStudent" class="w3-container openTab" style="display:none">
+        <div w3-include-html="<?php echo('src/addScoreStudent.php?id=').$id?>"></div>
     </div>
 
     <div class="col-12">&nbsp;</div>

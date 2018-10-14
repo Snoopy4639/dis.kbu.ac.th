@@ -23,7 +23,7 @@
         <div class="container-fluid">
             <div class="w3-card-4 w3-light-gray">
                 <div class="text-center w3-gray">
-                    <label class="header">ข่าวประชาสัมพันธ์ทั้งหมด</label>
+                    <label class="header">ข่าวประชาสัมพันธ์</label>
                 </div>
                 <?php
                     $sqlBanner = 'SELECT * FROM NEWS_BANNER';
@@ -39,16 +39,29 @@
                     $sql = 'SELECT * FROM NEWS WHERE id="'.$id.'"';
                     $query = mysqli_query($conn,$sql);
                 ?>
-                <div class="col-10 offset-1 w3-white">
-                    <?php while($result=mysqli_fetch_array($query,MYSQLI_ASSOC)) { ?>
-                    <div class="col-12 text-center">
-                        <img class="img-fluid" src="backend-client/src/backend/upload/news/<?php echo($result["news_pic_path"]);?>" style="max-width: 400px">
+                <div class="col-10 offset-1 w3-card-4 w3-white">
+                    <div class="w3-padding-large">
+                        <div class="col-12">&nbsp;</div>
+                        <?php while($result=mysqli_fetch_array($query,MYSQLI_ASSOC)) { ?>
+                        <div class="col-12 text-center">
+                            <img class="img-fluid" src="backend-client/src/backend/upload/news/<?php echo($result["news_pic_path"]);?>" style="max-width: 400px">
+                        </div>
+                        <div class="col-12">&nbsp;</div>
+                        <div class="col-12">&nbsp;</div>
+                        <div class="w3-card-2 w3-amber">
+                            <div class="w3-padding">
+                                <label class="header"><?php echo($result["news_title"]);?></label>
+                            </div>
+                        </div>
+                        <div class="col-12">&nbsp;</div>
+                        <p class="detail"><?php echo($result["news_detail"]);?></p>
+                        <div class="col-12">&nbsp;</div>
+                        <div class="text-right">
+                            <label class="detail">อัพเดทเมื่อวันที่ : <?=$result["news_date"]?></label>
+                        </div>
+                        <?php } ?>
+                        <div class="col-12">&nbsp;</div>
                     </div>
-                    <div class="col-12">&nbsp;</div>
-                    <label class="header"><?php echo($result["news_title"]);?></label>
-                    <p class="detail"><?php echo($result["news_detail"]);?></p>
-                    <?php } ?>
-
                 </div>
                 <div class="col-12">&nbsp;</div>
                 <div class="text-center">

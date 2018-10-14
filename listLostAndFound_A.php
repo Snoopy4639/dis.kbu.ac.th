@@ -66,6 +66,7 @@
                     <?php while($result=mysqli_fetch_array($query,MYSQLI_ASSOC)) { ?>
                         <div class="col-md-4 col-4 text-center w3-hover-gray w3-border" style="padding-bottom: 1%; padding-top: 1%">
                             <img src="<?php echo("backend-client/src/backend/upload/lost_and_found_A/".$result["item_pic_path"])?>" class="img-fluid lost-and-found-A">
+                            <br>
                             <label class="detail" style="margin-top: 5%">
                                 <?php if($result['item_status'] == 1) { ?>
                                     <div class="col-12 w3-green">

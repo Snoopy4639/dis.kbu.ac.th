@@ -41,7 +41,7 @@
                         </div>
                     </div>
                     <?php
-                        header("Refresh:5; location: /dis/backend-client/listStudent.php?status="."showall");
+                        header("location: /dis/backend-client/listStudent.php?status="."showall");
                     ?>
             <?php } if ($_GET['status'] == false) { ?>
                     <div class="col-12">

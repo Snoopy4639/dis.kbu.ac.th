@@ -16,6 +16,7 @@
     $i = 1;
     while($behaviorTypes=mysqli_fetch_array($queryBehaviorType,MYSQLI_ASSOC)) { 
         $behaviorType[$i] = $behaviorTypes["name_type"];
+        // echo($i." : ".$behaviorType[$i]."<br>");
         $i = $i+1;
     }
 
@@ -44,11 +45,17 @@
         <div class="col-10 offset-1">
             <div class="col-12">&nbsp;</div>
             <label class="header">รายงานข้อมูลประวัติพฤติกรรม</label>
-                <div class="w3-card-4 w3-amber">
+                <div class="w3-card-4 w3-light-gray">
                     <div class="container-fluid">
                         <div class="col-12">&nbsp;</div>
                         <?php while($result=mysqli_fetch_array($query,MYSQLI_ASSOC)) { ?>
-                            <div class="w3-card-4 w3-white w3-hover-gray" style="padding-top:1%">
+                            <div class="w3-card-4
+                                        <?php
+                                            if($result["remove_score_record"] != 0) { echo("w3-pale-red");} 
+                                            else { echo("w3-pale-green");}
+                                        ?>
+                                        w3-hover-gray" 
+                                style="padding-top:1%">
                                 <div class="container">
                                     <div class="row">
                                         <div class="col">
@@ -103,8 +110,13 @@
                                                 <div class="col-12">&nbsp;</div>
                                                 <div class="w3-row-padding">
                                                     <div class="w3-half">
-                                                        <label class="detail"><i class="fa fa-calendar-minus-o icon-detail"></i>&nbsp;&nbsp;คะแนนที่หัก : </label>
-                                                        <input class="w3-input w3-white" value="<?php echo($result["remove_score_record"]);?>" type="number" min="1" max="100" disabled >
+                                                        <?php if($result["remove_score_record"] != 0) { ?>
+                                                            <label class="detail"><i class="fa fa-calendar-minus-o icon-detail"></i>&nbsp;&nbsp;คะแนนที่หัก : </label>
+                                                            <input class="w3-input w3-white" value="<?php echo($result["remove_score_record"]);?>" type="number" min="1" max="100" disabled >
+                                                        <?php } else { ?>
+                                                            <label class="detail"><i class="fa fa-calendar-plus-o icon-detail"></i>&nbsp;&nbsp;คะแนนที่เพิ่ม : </label>
+                                                            <input class="w3-input w3-white" value="<?php echo($result["add_score_record"]);?>" type="number" min="1" max="100" disabled >
+                                                        <?php } ?>
                                                     </div>
                                                     <div class="w3-half">
                                                         <label class="detail"><i class="fa fa-user icon-detail"></i>&nbsp;&nbsp;ผู้ลงบันทึก : </label>

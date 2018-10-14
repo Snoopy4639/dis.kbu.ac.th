@@ -29,10 +29,10 @@
                 <div class="col-12">&nbsp;</div>
                 <div class="col-md-2 col-12 text-center">
                     <md-body>
-                        <img src="/dis/photo/logo.jpeg" class="img-fluid logo-img-md">                        
+                        <img src="/dis/photo/logo2.png" class="img-fluid logo-img-md">                        
                     </md-body>
                     <sm-body>
-                        <img src="/dis/photo/logo.jpeg" class="img-fluid logo-img-sm">
+                        <img src="/dis/photo/logo2.png" class="img-fluid logo-img-sm">
                     </sm-body>
                 </div>
                 <div class="col-md-9">

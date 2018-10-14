@@ -28,6 +28,8 @@
                         <div class="col-12">&nbsp;</div>
                         <div class="text-center">
                             <div class="col-12">
+                                <img src="photo/index/ruleBanner.png" class="img-fluid">
+                                <div class="col-12">&nbsp;</div>
                                 <label class="header">ความผิดสถานเบา</label>
                                 <div class="w3-responsive">
                                     <table class="w3-table-all w3-centered w3-card-4">
