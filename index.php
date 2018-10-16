@@ -27,17 +27,6 @@
     <md-body>
         <div class="w3-amber">
             <div w3-include-html="header.html"></div>
-            <!-- <div class="row">
-                <div class="col-10">
-                    <div w3-include-html="header.html"></div>
-                    <div class="col-12">&nbsp;</div>
-                    <div class="col-12">&nbsp;</div>
-                </div>
-                <div class="col-2">
-                    <img src="photo/index/students.png" class="img-fluid" style="width:150%; margin-top: 40%; margin-right: 20%">
-                </div>
-            </div> -->
-
             <div class="container-fluid"> 
                 <?php if($_GET != NULL) {?>
                     <?php if($_GET["Status"] == 0) {?>
@@ -160,27 +149,6 @@
                                                 <?php echo($result["news_title"]);?>
                                                 <label class="w3-right"><?php echo($result["news_date"]);?></label>
                                             </li></a>
-
-                                            <!-- <a href="#"><li class="w3-padding-large">
-                                                ประกาศผลรางวัล "คณะขี้เหล้าดีเด่น ประจำปี พ.ศ.2560"
-                                                <label class="w3-right">13-07-2561</label>
-                                            </li></a>
-                                            <a href="#"><li class="w3-padding-large">
-                                                รายชื่อนักศึกษาหนีราชการทหารปี พ.ศ.2561
-                                                <label class="w3-right">13-07-2561</label>
-                                            </li></a>
-                                            <a href="#"><li class="w3-padding-large">
-                                                คณะวิทยาศาสตร์และเทคโนโลยี คณะดีเด่นแห่งยุคนี้ !
-                                                <label class="w3-right">13-07-2561</label>
-                                            </li></a>
-                                            <a href="#"><li class="w3-padding-large">
-                                                เกษมใจดี ให้กัญชาเสรีกับ นศ.
-                                                <label class="w3-right">13-07-2561</label>
-                                            </li></a>
-                                            <a href="#"><li class="w3-padding-large">
-                                                ขอเชิญร่วมงาน ซื้อ-ขาย อาวุธประจำปี ของมหาวิทยาลัย
-                                                <label class="w3-right">13-07-2561</label>
-                                            </li></a> -->
                                         <?php } ?>
                                     </ul>
                                 </div>
