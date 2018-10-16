@@ -24,9 +24,20 @@
     </style> -->
 </head>
 <body>
-    <div w3-include-html="header.html"></div>
     <md-body>
         <div class="w3-amber">
+            <div w3-include-html="header.html"></div>
+            <!-- <div class="row">
+                <div class="col-10">
+                    <div w3-include-html="header.html"></div>
+                    <div class="col-12">&nbsp;</div>
+                    <div class="col-12">&nbsp;</div>
+                </div>
+                <div class="col-2">
+                    <img src="photo/index/students.png" class="img-fluid" style="width:150%; margin-top: 40%; margin-right: 20%">
+                </div>
+            </div> -->
+
             <div class="container-fluid"> 
                 <?php if($_GET != NULL) {?>
                     <?php if($_GET["Status"] == 0) {?>
@@ -70,7 +81,10 @@
                     </div>
                     <?php }?>
                 <?php } ?>
-                <div class="col-12">&nbsp;</div>
+                <!-- <div class="w3-padding w3-display-topright">
+                    <img src="photo/index/students.png" class="img-fluid" style="width:20%">
+                </div> -->
+
                 <div class="w3-card-4 w3-light-gray" style="padding:2% 2% 2% 2%">
                     <?php
                         $sqlBanner = 'SELECT * FROM NEWS_BANNER';

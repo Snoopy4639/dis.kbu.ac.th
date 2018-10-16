@@ -91,7 +91,7 @@
                                             <div class="w3-row-padding">
                                                 <div class="w3-half">
                                                     <label class="detail">ชื่อผู้พบสิ่งของ <font class="text-danger">*</font></label>
-                                                    <input name="nameFoundInput" class="w3-input" type="text" id="datepicker" autocomplete="off" required>
+                                                    <input name="nameFoundInput" class="w3-input" type="text" autocomplete="off" required>
                                                 </div>
                                                 <div class="w3-half">
                                                     <label class="detail">เบอร์โทรศัพท์มือถือผู้พบสิ่งของ <font class="text-danger">*</font></label>
