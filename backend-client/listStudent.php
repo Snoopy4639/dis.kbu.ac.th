@@ -82,6 +82,18 @@
                 <div class="col-12">&nbsp;</div>
                 <div class="w3-card-4 w3-light-gray">
                     <div class="container">
+                        <?php if($_REQUEST['status'] == 'not-found') { ?>
+                            <div class="col-12">&nbsp;</div>
+                            <div class="text-center">
+                                <i class="fa fa-exclamation-circle icon-alert"></i>
+                                <label class="alert">ไม่พบข้อมูลนักศึกษา กรุณาลองใหม่</label>
+                                <br>
+                                <label class="header">กรุณาค้นหาข้อมูลหรือกดปุ่มด้านล่างเพื่อแสดงทั้งหมด</label>
+                                <div class="col-12">&nbsp;</div>
+                                <a href="listStudent.php?status=showall&Page=1"><button class="w3-button w3-green"><i class="fa fa-search"></i>&nbsp;&nbsp;แสดงข้อมูลทั้งหมด</button></a>
+                                <div class="col-12">&nbsp;</div>
+                            </div>
+                        <?php } ?>
                         <?php if($_REQUEST['status'] == 'view') { ?>
                             <div class="col-12">&nbsp;</div>
                             <div class="text-center">
@@ -223,25 +235,35 @@
                         if($_GET["status"] == "search") {
                             $idSearch = trim($_GET['idSearch']);
                             $nameSearch = trim($_GET['nameSearch']);
+
                             if($idSearch) { 
                                 if($nameSearch) { 
                                     include 'src/backend/connectDB.php';
-                                    $sql = 'SELECT * FROM STUDENT_INFO WHERE student_id LIKE "%'.$idSearch.'%" AND student_first_name LIKE "%'.$nameSearch.'%"';
-                                    $query = mysqli_query($conn,$sql);
+                                    $sqlSearch = 'SELECT * FROM STUDENT_INFO WHERE student_id LIKE "%'.$idSearch.'%" AND student_first_name LIKE "%'.$nameSearch.'%"';
+                                    $querySearch = mysqli_query($conn,$sqlSearch);
                                     $searchBy = "รหัสนักศึกษา : ".$idSearch." และ ชื่อ : ".$nameSearch;  
-                                } 
-                                include 'src/backend/connectDB.php';
-                                $sql = 'SELECT * FROM STUDENT_INFO WHERE student_id LIKE "%'.$idSearch.'%"';
-                                $query = mysqli_query($conn,$sql);
-                                $searchBy = "รหัสนักศึกษา : ".$idSearch;
+                                    $search_rows = mysqli_num_rows($querySearch);
+                                } else {
+                                    include 'src/backend/connectDB.php';
+                                    $sqlSearch = 'SELECT * FROM STUDENT_INFO WHERE student_id LIKE "%'.$idSearch.'%"';
+                                    $querySearch = mysqli_query($conn,$sqlSearch);
+                                    $searchBy = "รหัสนักศึกษา : ".$idSearch;
+                                    $search_rows = mysqli_num_rows($querySearch);
+                                }
                             } else if($nameSearch) {
                                 include 'src/backend/connectDB.php';
-                                $sql = 'SELECT * FROM STUDENT_INFO WHERE student_first_name LIKE "%'.$nameSearch.'%"';
-                                $query = mysqli_query($conn,$sql); 
+                                $sqlSearch = 'SELECT * FROM STUDENT_INFO WHERE student_first_name LIKE "%'.$nameSearch.'%"';
+                                $querySearch = mysqli_query($conn,$sqlSearch); 
                                 $searchBy = "ชื่อ : ".$nameSearch;
+                                $search_rows = mysqli_num_rows($querySearch);
                             } else {
                                 header("location: /dis/backend-client/listStudent.php?status=null");
-                            }?>
+                            }
+
+                            if($search_rows == 0) {
+                                header("location: /dis/backend-client/listStudent.php?status=not-found");
+                            }
+                        ?>
                         <div class="col-12">&nbsp;</div>
                         <div class="col-12">
                             <a href="listStudent.php?status=view"><button class="w3-button w3-gray" type="button"><i class="fa fa-repeat"></i>&nbsp;&nbsp;ล้างการค้นหา</button></a>
@@ -256,7 +278,7 @@
                                         <th width="20%" class="text-center"><label class="detail"><font size="+0.5">แก้ไข / ดูข้อมูล</font></label></th>
                                     </tr>
                                 </thead>
-                                <?php while($result=mysqli_fetch_array($query,MYSQLI_ASSOC)) { ?>
+                                <?php while($result=mysqli_fetch_array($querySearch,MYSQLI_ASSOC)) { ?>
                                 <tr>
                                     <td class="text-center"><label class="detail"><font size="+0.5"><?php echo $result['student_id']; ?></font></label></td>
                                     <td class="text-center"><label class="detail"><font size="+0.5"><?php echo $result['student_first_name'].' '.$result['student_last_name']; ?></font></label></td>
