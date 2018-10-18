@@ -27,6 +27,13 @@
                         <label class="header">บุคลากรภายในห้องวินัย</label>
                     </div>
                     <div class="text-center w3-white">
+                        <div class="col-12">&nbsp;</div>
+                        <div class="col-12">
+                            <div class="col12">&nbsp;</div>
+                            <img src="photo/index/staff/อำนวย.png" class="img-fluid">
+                            <br>
+                            <label class="header">อาจารย์อำนวย  ไกรทอง</label><br><label class="mini-header">หัวหน้าแผนกวินัยนักศึกษา</label>
+                        </div>
                         <div class="col-12">&nbsp;<div>
                         <div class="row">
                             <div class="col-4">
