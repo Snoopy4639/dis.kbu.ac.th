@@ -1,7 +1,7 @@
+<?php session_start(); ?>
+<?php ob_start();?>
 <!DOCTYPE html>
 <?php
-    session_start();
-    
     include 'src/backend/connectDB.php';
 	$sql = 'SELECT * FROM DIS_USER INNER JOIN DIS_USER_INFO ON DIS_USER.id = DIS_USER_INFO.id WHERE DIS_USER.username="'.$_SESSION["username"].'"';
     $query = mysqli_query($conn,$sql);

@@ -1,11 +1,10 @@
+<?php session_start(); ?>
+<?php ob_start();?>
 <!DOCTYPE html>
 <?php
-    session_start();
     if($_SESSION["permission"] == 3 || $_SESSION["permission"] == 4 || $_SESSION["permission"] == 5) {
         header("location: /dis/backend-client/index.php");
     }
-
-    ob_start(); 
 ?>
 <html>
 <head>
@@ -243,12 +242,18 @@
                                     $querySearch = mysqli_query($conn,$sqlSearch);
                                     $searchBy = "รหัสนักศึกษา : ".$idSearch." และ ชื่อ : ".$nameSearch;  
                                     $search_rows = mysqli_num_rows($querySearch);
+                                    if($search_rows == 0) {
+                                        header("location: /dis/backend-client/listStudent.php?status=not-found");
+                                    }
                                 } else {
                                     include 'src/backend/connectDB.php';
                                     $sqlSearch = 'SELECT * FROM STUDENT_INFO WHERE student_id LIKE "%'.$idSearch.'%"';
                                     $querySearch = mysqli_query($conn,$sqlSearch);
                                     $searchBy = "รหัสนักศึกษา : ".$idSearch;
                                     $search_rows = mysqli_num_rows($querySearch);
+                                    if($search_rows == 0) {
+                                        header("location: /dis/backend-client/listStudent.php?status=not-found");
+                                    }
                                 }
                             } else if($nameSearch) {
                                 include 'src/backend/connectDB.php';
@@ -256,12 +261,11 @@
                                 $querySearch = mysqli_query($conn,$sqlSearch); 
                                 $searchBy = "ชื่อ : ".$nameSearch;
                                 $search_rows = mysqli_num_rows($querySearch);
+                                if($search_rows == 0) {
+                                    header("location: /dis/backend-client/listStudent.php?status=not-found");
+                                }
                             } else {
                                 header("location: /dis/backend-client/listStudent.php?status=null");
-                            }
-
-                            if($search_rows == 0) {
-                                header("location: /dis/backend-client/listStudent.php?status=not-found");
                             }
                         ?>
                         <div class="col-12">&nbsp;</div>

@@ -1,6 +1,7 @@
+<?php session_start(); ?>
+<?php ob_start();?>
 <!DOCTYPE html>
 <?php
-	session_start();
 	if($_SESSION["permission"] == 5 || $_SESSION["permission"] == 3) {
 		header("location: /dis/backend-client/setPassword.php?status=1");
 	}

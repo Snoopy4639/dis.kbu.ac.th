@@ -1,7 +1,7 @@
+<?php session_start(); ?>
+<?php ob_start();?>
 <!DOCTYPE html>
 <?php
-    session_start();
-    
 	if($_SESSION["permission"] == 2 || $_SESSION["permission"] == 3 || $_SESSION["permission"] == 4 || $_SESSION["permission"] == 5) {
         header("location: /dis/backend-client/index.php");
     }
@@ -216,6 +216,7 @@
                                 <input type="hidden" value="<?=$id?>" name="idStatus">
                                 <div class="col-12 text-center">
                                     <?php if($status == 1) {?>
+                                    <input type="hidden" value="false" name="fromMyProfile">
                                     <button class="w3-button w3-green" type="submit">
                                         <i class="fa fa-check icon-detail"></i>&nbsp;&nbsp;แก้ไข
                                     </button>

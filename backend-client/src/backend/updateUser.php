@@ -20,7 +20,7 @@
 
     mysqli_close($conn);
 
-    if ($fromMyProfile == true) {
+    if ($fromMyProfile == "true") {
         header("location: /dis/backend-client/index.php");
     } else {
         $save = true;

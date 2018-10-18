@@ -1,11 +1,10 @@
+<?php session_start(); ?>
+<?php ob_start();?>
 <!DOCTYPE html>
 <?php
-    session_start();
     if($_SESSION["permission"] == 3 || $_SESSION["permission"] == 4 || $_SESSION["permission"] == 5) {
         header("location: /dis/backend-client/index.php");
     }
-
-    ob_start(); 
 ?>
 <html>
 <?php include('src/backend/connectDB.php'); ?>

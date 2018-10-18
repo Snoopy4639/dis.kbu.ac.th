@@ -1,7 +1,6 @@
+<?php session_start(); ?>
+<?php ob_start();?>
 <!DOCTYPE html>
-<?php
-    session_start();
-?>
 <html>
 <head>
 	<meta charset="utf-8" content="width=device-width, initial-scale=1" name="viewport">

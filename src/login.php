@@ -1,6 +1,5 @@
+<?php session_start(); ?>
 <?php
-    session_start();
-
     // Data from login.html
     $username = $_REQUEST["userNameLoginInput"];
     $password = base64_encode($_REQUEST["passwordLoginInput"]);
